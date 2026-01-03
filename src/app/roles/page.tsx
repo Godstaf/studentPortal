@@ -27,10 +27,10 @@ export default function LoginPage() {
             router.push("/studentForm");
             break;
         case "faculty":
-            router.push("/facultyForm");
+            router.push("/forms/faculty");
             break;
         case "recruiter":
-            router.push("/recruiterForm");
+            router.push("/forms/recruiter");
             break;
         default:
             router.push("/");

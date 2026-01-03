@@ -33,12 +33,7 @@ export default function FacultyForm() {
   }
 
   return (
-    <div style={{ maxWidth: 420, margin: "48px auto" }}>
-      <Card variant="filled">
-        <h2 style={{ fontWeight: 600, fontSize: "1.7rem", marginBottom: 12 }}>
-          Faculty Onboarding
-        </h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <FormInput
             label="Institution Name"
             name="institution"
@@ -99,7 +94,6 @@ export default function FacultyForm() {
             Submit
           </Button>
         </form>
-      </Card>
-    </div>
+      
   );
 }

@@ -1,10 +1,9 @@
 "use client";
-import FacultyForm from "./FacultyForm";
-import RecruiterForm from "./RecruiterForm";
-import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/Button";
 
 export default function FormsLanding() {
-  const [active, setActive] = useState<"faculty" | "recruiter" | "">("");
+  const router = useRouter();
 
   return (
     <div
@@ -17,64 +16,6 @@ export default function FormsLanding() {
         alignItems: "center",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          gap: 18,
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        <button
-          style={{
-            flex: 1,
-            background:
-              active === "faculty"
-                ? "var(--md-sys-color-primary)"
-                : "var(--md-sys-color-secondary)",
-            color:
-              active === "faculty"
-                ? "var(--md-sys-color-on-primary)"
-                : "var(--md-sys-color-on-secondary)",
-            border: 0,
-            borderRadius: 20,
-            fontWeight: 600,
-            padding: "12px 0",
-            fontSize: "1.085rem",
-            cursor: "pointer",
-            transition: "background 0.2s,color 0.2s",
-          }}
-          onClick={() => setActive("faculty")}
-        >
-          Faculty
-        </button>
-        <button
-          style={{
-            flex: 1,
-            background:
-              active === "recruiter"
-                ? "var(--md-sys-color-primary)"
-                : "var(--md-sys-color-secondary)",
-            color:
-              active === "recruiter"
-                ? "var(--md-sys-color-on-primary)"
-                : "var(--md-sys-color-on-secondary)",
-            border: 0,
-            borderRadius: 20,
-            fontWeight: 600,
-            padding: "12px 0",
-            fontSize: "1.085rem",
-            cursor: "pointer",
-            transition: "background 0.2s,color 0.2s",
-          }}
-          onClick={() => setActive("recruiter")}
-        >
-          Recruiter
-        </button>
-      </div>
-      {active === "faculty" && <FacultyForm />}
-      {active === "recruiter" && <RecruiterForm />}
-      {!active && (
         <div
           style={{
             marginTop: 42,
@@ -82,10 +23,17 @@ export default function FormsLanding() {
             opacity: 0.7,
             fontSize: "1.1rem",
           }}
+          className="flex flex-col justify-center gap-4"
         >
-          Select a form to begin onboarding
+          <p>Select a role to begin onboarding</p>
+          <Button
+            variant="filled"
+            className="mt-4"
+            onClick={() => router.push("/roles")}
+          >
+            Back to roles
+          </Button>
         </div>
-      )}
     </div>
   );
 }
