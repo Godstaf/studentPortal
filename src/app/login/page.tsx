@@ -29,7 +29,7 @@ export default function LoginPage() {
       router.push("/dashboard");
     } else {
       // signUp(formData);
-      router.push("/dashboard");
+      router.push("/roles");
     }
   };
 

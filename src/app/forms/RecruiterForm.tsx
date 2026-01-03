@@ -48,12 +48,7 @@ export default function RecruiterForm() {
     alert("Recruiter form submitted!\n" + JSON.stringify(form, null, 2));
   }
   return (
-    <div style={{ maxWidth: 420, margin: "48px auto" }}>
-      <Card variant="filled">
-        <h2 style={{ fontWeight: 600, fontSize: "1.7rem", marginBottom: 12 }}>
-          Recruiter Onboarding
-        </h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <FormInput
             label="Full name"
             name="fullName"
@@ -128,7 +123,5 @@ export default function RecruiterForm() {
             Submit
           </Button>
         </form>
-      </Card>
-    </div>
   );
 }
