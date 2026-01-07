@@ -6,12 +6,18 @@ import styles from './Navbar.module.css';
 import { Button } from '../ui/Button';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { motion } from 'framer-motion';
+import { useAuth } from '@/context/AuthContext';
 
 export const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { user, logout } = useAuth();
 
     const toggleMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const getInitials = (name: string) => {
+        return name ? name.charAt(0).toUpperCase() : '?';
     };
 
     return (
@@ -41,9 +47,37 @@ export const Navbar = () => {
                         </motion.div>
                     </Link>
                     <ThemeToggle />
-                    <Link href="/login">
-                        <Button variant="filled">Login</Button>
-                    </Link>
+                    {user ? (
+                        <div 
+                            style={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                gap: '10px', 
+                                cursor: 'pointer' 
+                            }}
+                            onClick={logout}
+                            title="Click to logout"
+                        >
+                            <div style={{
+                                width: '40px',
+                                height: '40px',
+                                borderRadius: '50%',
+                                backgroundColor: 'var(--md-sys-color-primary)',
+                                color: 'var(--md-sys-color-on-primary)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontWeight: 'bold',
+                                fontSize: '1.2rem'
+                            }}>
+                                {getInitials(user.full_name)}
+                            </div>
+                        </div>
+                    ) : (
+                        <Link href="/login">
+                            <Button variant="filled">Login</Button>
+                        </Link>
+                    )}
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -69,9 +103,15 @@ export const Navbar = () => {
                 <Link href="/opportunities" className={styles.liquidLink} onClick={toggleMenu}>Opportunities</Link>
                 <Link href="/dashboard" className={styles.liquidLink} onClick={toggleMenu}>Dashboard</Link>
                 <ThemeToggle />
-                <Link href="/login" onClick={toggleMenu}>
-                    <Button variant="filled" style={{ width: '100%' }}>Login</Button>
-                </Link>
+                {user ? (
+                    <div onClick={() => { logout(); toggleMenu(); }} style={{ cursor: 'pointer', textAlign: 'center', padding: '10px' }}>
+                         Log out ({user.username})
+                    </div>
+                ) : (
+                    <Link href="/login" onClick={toggleMenu}>
+                        <Button variant="filled" style={{ width: '100%' }}>Login</Button>
+                    </Link>
+                )}
             </div>
         </>
     );
