@@ -58,247 +58,342 @@ var _s = __turbopack_context__.k.signature();
 function LoginPage() {
     _s();
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [state, setState] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("login");
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        name: "",
+        email: "",
+        password: ""
+    });
+    const handleChange = (e)=>{
+        const { name, value } = e.target;
+        setFormData((prev)=>({
+                ...prev,
+                [name]: value
+            }));
+    };
     const handleSubmit = (e)=>{
         e.preventDefault();
-        setIsLoading(true);
-        // Simulate login delay
-        setTimeout(()=>{
-            setIsLoading(false);
-            // Redirect to dashboard
-            router.push('/dashboard');
-        }, 1500);
+        if (state === "login") {
+            // login(formData);
+            router.push("/dashboard");
+        } else {
+            // signUp(formData);
+            router.push("/roles");
+        }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
         style: {
-            minHeight: 'calc(100vh - 64px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '24px'
+            minHeight: "calc(100vh - 64px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "24px"
         },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$GlassContainer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GlassContainer"], {
             style: {
-                maxWidth: '400px',
-                width: '100%',
-                padding: '40px'
+                maxWidth: "400px",
+                width: "100%",
+                padding: "40px"
             },
             children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                state === "login" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     style: {
-                        textAlign: 'center',
-                        marginBottom: '2rem'
+                        textAlign: "center",
+                        marginBottom: "2rem"
                     },
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             style: {
-                                fontSize: '2rem',
-                                marginBottom: '0.5rem',
+                                fontSize: "2rem",
+                                marginBottom: "0.5rem",
                                 fontWeight: 700
                             },
                             children: "Welcome Back"
                         }, void 0, false, {
                             fileName: "[project]/src/app/login/page.tsx",
-                            lineNumber: 34,
-                            columnNumber: 21
+                            lineNumber: 51,
+                            columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             style: {
-                                color: 'var(--md-sys-color-secondary)'
+                                color: "var(--md-sys-color-secondary)"
                             },
                             children: "Sign in to access your dashboard"
                         }, void 0, false, {
                             fileName: "[project]/src/app/login/page.tsx",
-                            lineNumber: 35,
-                            columnNumber: 21
+                            lineNumber: 60,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/login/page.tsx",
-                    lineNumber: 33,
-                    columnNumber: 17
+                    lineNumber: 50,
+                    columnNumber: 11
+                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        textAlign: "center",
+                        marginBottom: "2rem"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                            style: {
+                                fontSize: "2rem",
+                                marginBottom: "0.5rem",
+                                fontWeight: 700
+                            },
+                            children: "Create Account"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/login/page.tsx",
+                            lineNumber: 66,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            style: {
+                                color: "var(--md-sys-color-secondary)"
+                            },
+                            children: "Sign up to get started with your dashboard"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/login/page.tsx",
+                            lineNumber: 75,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/app/login/page.tsx",
+                    lineNumber: 65,
+                    columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                     onSubmit: handleSubmit,
                     style: {
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '1.5rem'
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "1.5rem"
                     },
                     children: [
+                        state !== "login" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    htmlFor: "name",
+                                    style: {
+                                        display: "block",
+                                        marginBottom: "0.5rem",
+                                        fontWeight: 500
+                                    },
+                                    children: "Name"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/login/page.tsx",
+                                    lineNumber: 87,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    id: "name",
+                                    name: "name",
+                                    type: "text",
+                                    placeholder: "name",
+                                    required: true,
+                                    style: {
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid var(--input-border)",
+                                        background: "var(--input-background)",
+                                        color: "var(--input-color)",
+                                        fontSize: "1rem"
+                                    },
+                                    value: formData.name,
+                                    onChange: handleChange
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/login/page.tsx",
+                                    lineNumber: 97,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/login/page.tsx",
+                            lineNumber: 86,
+                            columnNumber: 13
+                        }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                     htmlFor: "email",
                                     style: {
-                                        display: 'block',
-                                        marginBottom: '0.5rem',
+                                        display: "block",
+                                        marginBottom: "0.5rem",
                                         fontWeight: 500
                                     },
                                     children: "Email"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/login/page.tsx",
-                                    lineNumber: 40,
-                                    columnNumber: 25
+                                    lineNumber: 118,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     id: "email",
+                                    name: "email",
                                     type: "email",
                                     placeholder: "student@university.edu",
                                     required: true,
                                     style: {
-                                        width: '100%',
-                                        padding: '12px',
-                                        borderRadius: '8px',
-                                        border: '1px solid var(--input-border)',
-                                        background: 'var(--input-background)',
-                                        color: 'var(--input-color)',
-                                        fontSize: '1rem'
-                                    }
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid var(--input-border)",
+                                        background: "var(--input-background)",
+                                        color: "var(--input-color)",
+                                        fontSize: "1rem"
+                                    },
+                                    value: formData.email,
+                                    onChange: handleChange
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/login/page.tsx",
-                                    lineNumber: 41,
-                                    columnNumber: 25
+                                    lineNumber: 128,
+                                    columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/login/page.tsx",
-                            lineNumber: 39,
-                            columnNumber: 21
+                            lineNumber: 117,
+                            columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                     htmlFor: "password",
                                     style: {
-                                        display: 'block',
-                                        marginBottom: '0.5rem',
+                                        display: "block",
+                                        marginBottom: "0.5rem",
                                         fontWeight: 500
                                     },
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/login/page.tsx",
-                                    lineNumber: 59,
-                                    columnNumber: 25
+                                    lineNumber: 149,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     id: "password",
+                                    name: "password",
                                     type: "password",
                                     placeholder: "••••••••",
                                     required: true,
                                     style: {
-                                        width: '100%',
-                                        padding: '12px',
-                                        borderRadius: '8px',
-                                        border: '1px solid var(--input-border)',
-                                        background: 'var(--input-background)',
-                                        color: 'var(--input-color)',
-                                        fontSize: '1rem'
-                                    }
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid var(--input-border)",
+                                        background: "var(--input-background)",
+                                        color: "var(--input-color)",
+                                        fontSize: "1rem"
+                                    },
+                                    value: formData.password,
+                                    onChange: handleChange
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/login/page.tsx",
-                                    lineNumber: 60,
-                                    columnNumber: 25
+                                    lineNumber: 159,
+                                    columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/login/page.tsx",
-                            lineNumber: 58,
-                            columnNumber: 21
+                            lineNumber: 148,
+                            columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
-                                display: 'flex',
-                                justifyContent: 'flex-end',
-                                alignItems: 'center',
-                                fontSize: '0.875rem'
+                                display: "flex",
+                                justifyContent: "flex-end",
+                                alignItems: "center",
+                                fontSize: "0.875rem"
                             },
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 href: "#",
                                 style: {
-                                    color: 'var(--md-sys-color-primary)',
-                                    textDecoration: 'none'
+                                    color: "var(--md-sys-color-primary)",
+                                    textDecoration: "none"
                                 },
                                 children: "Forgot password?"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/login/page.tsx",
-                                lineNumber: 78,
-                                columnNumber: 25
+                                lineNumber: 187,
+                                columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/login/page.tsx",
-                            lineNumber: 77,
-                            columnNumber: 21
+                            lineNumber: 179,
+                            columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                             variant: "filled",
                             type: "submit",
                             disabled: isLoading,
                             style: {
-                                height: '48px',
-                                fontSize: '1rem',
-                                marginTop: '0.5rem'
+                                height: "48px",
+                                fontSize: "1rem",
+                                marginTop: "0.5rem"
                             },
-                            children: isLoading ? 'Signing in...' : 'Sign In'
+                            children: isLoading ? "Signing in..." : "Sign In"
                         }, void 0, false, {
                             fileName: "[project]/src/app/login/page.tsx",
-                            lineNumber: 83,
-                            columnNumber: 21
+                            lineNumber: 198,
+                            columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/login/page.tsx",
-                    lineNumber: 38,
-                    columnNumber: 17
+                    lineNumber: 81,
+                    columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     style: {
-                        marginTop: '2rem',
-                        textAlign: 'center',
-                        fontSize: '0.875rem'
+                        marginTop: "2rem",
+                        textAlign: "center",
+                        fontSize: "0.875rem"
                     },
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            style: {
-                                color: 'var(--md-sys-color-secondary)'
-                            },
-                            children: "Don't have an account? "
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/login/page.tsx",
-                            lineNumber: 94,
-                            columnNumber: 21
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            href: "#",
-                            style: {
-                                color: 'var(--md-sys-color-primary)',
-                                fontWeight: 600
-                            },
-                            children: "Sign up"
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/login/page.tsx",
-                            lineNumber: 95,
-                            columnNumber: 21
-                        }, this)
-                    ]
-                }, void 0, true, {
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        onClick: ()=>setState((prev)=>prev === "login" ? "register" : "login"),
+                        style: {
+                            color: "var(--md-sys-color-secondary)"
+                        },
+                        children: [
+                            state === "login" ? "Don't have an account?" : "Already have an account?",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    color: "var(--md-sys-color-primary)",
+                                    fontWeight: 600
+                                },
+                                children: "click here"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/login/page.tsx",
+                                lineNumber: 224,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/app/login/page.tsx",
+                        lineNumber: 215,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/src/app/login/page.tsx",
-                    lineNumber: 93,
-                    columnNumber: 17
+                    lineNumber: 208,
+                    columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/login/page.tsx",
-            lineNumber: 32,
-            columnNumber: 13
+            lineNumber: 46,
+            columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/login/page.tsx",
-        lineNumber: 25,
-        columnNumber: 9
+        lineNumber: 37,
+        columnNumber: 5
     }, this);
 }
-_s(LoginPage, "oofmIDu+Prn0iTOh5nKhCcpj4zQ=", false, function() {
+_s(LoginPage, "OYJ7n9/TNkoz27hWbJZLx7FOvJw=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
