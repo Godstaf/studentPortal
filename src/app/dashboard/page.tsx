@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { useAuth } from "@/context/AuthContext";
 import { opportunities } from "@/data/opportunities";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
@@ -13,6 +14,7 @@ export default function DashboardPage() {
     const appliedOpportunities = [opportunities[0], opportunities[3]];
     const savedOpportunities = [opportunities[1]];
     const [selectedId, setSelectedId] = useState<string | null>(null);
+    const {user} = useAuth()
 
     return (
         <main style={{ padding: '2rem 24px', maxWidth: '1200px', margin: '0 auto', minHeight: '100vh' }}>

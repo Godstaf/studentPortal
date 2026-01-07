@@ -1,16 +1,613 @@
-[00:00:00.483] Server  LOG     ✓ Ready in 337ms
-[00:00:03.615] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:40.587] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:09:26.514] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[06:27:09.894] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[06:27:12.253] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[06:27:12.382] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[06:32:53.941] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[06:33:19.954] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[06:41:06.273] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[06:41:06.437] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[06:41:12.551] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[06:41:12.663] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:02.847] Server  LOG     ✓ Ready in 1961ms
+[00:01:05.740] Server  ERROR   ⨯ Error: Objects are not valid as a React child (found: object with keys {$$typeof, render}). If you meant to render a collection of children, use an array instead.
+[00:01:05.763] Server  LOG     ✓ Compiled in 819ms
+[00:01:05.809] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:06.207] Server  ERROR   ⨯ Error: Objects are not valid as a React child (found: object with keys {$$typeof, render}). If you meant to render a collection of children, use an array instead.
+[00:01:07.516] Browser ERROR   uncaughtError: Error: Objects are not valid as a React child (found: object with keys {$$typeof, render}). If you meant to render a collection of children, use an array instead.
+[00:01:07.517] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:07.797] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:07.799] Server  LOG     ✓ Compiled in 233ms
+[00:01:07.813] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:24.105] Server  LOG     ✓ Compiled in 70ms
+[00:01:25.378] Server  LOG     ✓ Compiled in 52ms
+[00:01:34.079] Server  LOG     ✓ Compiled in 59ms
+[00:01:40.176] Server  LOG     ✓ Compiled in 49ms
+[00:01:41.059] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'role')
+[00:01:41.964] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:42.214] Server  ERROR   ⨯ TypeError: Cannot read properties of null (reading 'role')
+[00:01:42.240] Server  LOG     ✓ Compiled in 58ms
+[00:01:44.053] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'role')
+[00:01:46.875] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:46.881] Server  LOG     ✓ Compiled in 59ms
+[00:01:47.100] Server  ERROR   ⨯ TypeError: Cannot read properties of null (reading 'role')
+[00:01:48.055] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'role')
+[00:02:05.542] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:02:05.819] Server  LOG     ✓ Compiled in 50ms
+[00:02:33.288] Server  LOG     ✓ Compiled in 59ms
+[00:02:34.063] Browser ERROR   ./src/app/providers.tsx:13:29
+Parsing ecmascript source code failed
+  11 |                 {/* <AuthGuard> */}
+  12 |                     {children}
+> 13 |                 </AuthGuard>
+     |                             ^
+> 14 |             </AuthProvider>
+     | ^^^^^^^^^^^^^
+  15 |         </ThemeProvider>
+  16 |     );
+  17 | }
+
+Expected '</', got 'jsx text (
+            )'
+
+Import trace:
+  Server Component:
+    ./src/app/providers.tsx
+    ./src/app/layout.tsx
+[00:02:47.446] Server  LOG     ✓ Compiled in 47ms
+[00:02:55.128] Server  LOG     ✓ Compiled in 44ms
+[00:02:59.885] Server  LOG     ✓ Compiled in 54ms
+[00:03:05.969] Server  LOG     ✓ Compiled in 49ms
+[00:03:11.998] Server  LOG     ✓ Compiled in 56ms
+[00:03:25.728] Server  LOG     ✓ Compiled in 63ms
+[00:03:35.447] Server  LOG     ✓ Compiled in 58ms
+[00:03:49.180] Server  LOG     ✓ Compiled in 49ms
+[00:03:53.530] Server  LOG     ✓ Compiled in 47ms
+[00:03:56.857] Server  LOG     ✓ Compiled in 55ms
+[00:03:58.415] Server  LOG     ✓ Compiled in 52ms
+[00:04:04.945] Server  LOG     ✓ Compiled in 40ms
+[00:04:39.327] Server  LOG     ✓ Compiled in 48ms
+[00:04:50.336] Server  LOG     ✓ Compiled in 51ms
+[00:05:22.705] Server  LOG     ✓ Compiled in 62ms
+[00:05:23.056] Browser ERROR   ./src/components/layout/Navbar.tsx:16:5
+Parsing ecmascript source code failed
+  14 |     user.role = 
+  15 |
+> 16 |     const toggleMenu = () => {
+     |     ^^^^^
+  17 |         setIsMobileMenuOpen(!isMobileMenuOpen);
+  18 |     };
+  19 |
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/layout/Navbar.tsx
+    ./src/app/layout.tsx
+[00:05:25.756] Server  LOG     ✓ Compiled in 60ms
+[00:05:27.077] Browser ERROR   uncaughtError: TypeError: Cannot set properties of null (setting 'role')
+[00:05:28.681] Server  LOG     ✓ Compiled in 97ms
+[00:05:29.053] Browser ERROR   ./src/components/layout/Navbar.tsx:14:5
+Parsing ecmascript source code failed
+  12 |     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  13 |     const { user, logout } = useAuth();
+> 14 |     user?.role = "student"
+     |     ^^^^^^^^^^
+  15 |
+  16 |     const toggleMenu = () => {
+  17 |         setIsMobileMenuOpen(!isMobileMenuOpen);
+
+The left-hand side of an assignment expression must be a variable or a property access.
+
+Import trace:
+  Server Component:
+    ./src/components/layout/Navbar.tsx
+    ./src/app/layout.tsx
+[00:05:30.954] Server  LOG     ✓ Compiled in 49ms
+[00:05:30.959] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:31.140] Server  ERROR   ⨯ TypeError: Cannot set properties of null (setting 'role')
+[00:05:32.056] Browser ERROR   uncaughtError: TypeError: Cannot set properties of null (setting 'role')
+[00:05:36.943] Server  LOG     ✓ Compiled in 63ms
+[00:05:37.055] Browser ERROR   ./src/components/layout/Navbar.tsx:14:5
+Parsing ecmascript source code failed
+  12 |     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  13 |     const { user, logout } = useAuth();
+> 14 |     user?.role = "student"
+     |     ^^^^^^^^^^
+  15 |
+  16 |     const toggleMenu = () => {
+  17 |         setIsMobileMenuOpen(!isMobileMenuOpen);
+
+The left-hand side of an assignment expression must be a variable or a property access.
+
+Import trace:
+  Server Component:
+    ./src/components/layout/Navbar.tsx
+    ./src/app/layout.tsx
+[00:05:42.508] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:06:05.439] Server  LOG     ✓ Compiled in 54ms
+[00:06:17.522] Server  LOG     ✓ Compiled in 54ms
+[00:06:23.005] Server  LOG     ✓ Compiled in 46ms
+[00:06:24.064] Browser ERROR   uncaughtError: ReferenceError: trueuser is not defined
+[00:06:25.969] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:06:26.312] Server  LOG     ✓ Compiled in 56ms
+[00:06:29.908] Server  LOG     ✓ Compiled in 44ms
+[00:06:32.738] Server  LOG     ✓ Compiled in 57ms
+[00:06:36.312] Server  LOG     ✓ Compiled in 73ms
+[00:06:42.390] Server  LOG     ✓ Compiled in 66ms
+[00:06:45.252] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:07:04.172] Server  LOG     ✓ Compiled in 50ms
+[00:07:08.590] Server  LOG     ✓ Compiled in 65ms
+[00:07:11.456] Server  LOG     ✓ Compiled in 46ms
+[00:07:31.393] Server  LOG     ✓ Compiled in 63ms
+[00:07:40.727] Server  LOG     ✓ Compiled in 63ms
+[00:07:46.068] Server  LOG     ✓ Compiled in 68ms
+[00:07:49.638] Server  LOG     ✓ Compiled in 52ms
+[00:08:06.818] Server  LOG     ✓ Compiled in 64ms
+[00:08:15.956] Server  LOG     ✓ Compiled in 58ms
+[00:08:18.345] Server  LOG     ✓ Compiled in 49ms
+[00:08:28.441] Server  LOG     ✓ Compiled in 44ms
+[00:08:35.759] Server  LOG     ✓ Compiled in 48ms
+[00:08:42.854] Server  LOG     ✓ Compiled in 49ms
+[00:08:49.925] Server  LOG     ✓ Compiled in 56ms
+[00:09:03.500] Server  LOG     ✓ Compiled in 54ms
+[00:09:09.653] Server  LOG     ✓ Compiled in 58ms
+[00:09:21.718] Server  LOG     ✓ Compiled in 93ms
+[00:09:27.237] Server  LOG     ✓ Compiled in 78ms
+[00:09:34.274] Server  LOG     ✓ Compiled in 69ms
+[00:09:35.056] Browser ERROR   ./src/components/layout/Navbar.tsx:76:15
+Parsing ecmascript source code failed
+  74 |               </Link>
+  75 |             )}
+> 76 |             { && (
+     |               ^^
+  77 |               <Link href="/recruiter_dashboard">
+  78 |                 <motion.div
+  79 |                   className={styles.liquidLink}
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/layout/Navbar.tsx
+    ./src/app/layout.tsx
+[00:09:43.109] Server  LOG     ✓ Compiled in 81ms
+[00:09:49.965] Server  LOG     ✓ Compiled in 84ms
+[00:10:14.970] Server  LOG     ✓ Compiled in 63ms
+[00:10:37.619] Server  LOG     ✓ Compiled in 64ms
+[00:10:44.259] Server  LOG     ✓ Compiled in 56ms
+[00:11:03.676] Server  LOG     ✓ Compiled in 86ms
+[00:11:03.783] Browser ERROR   ./src/components/layout/Navbar.tsx:108:21
+Parsing ecmascript source code failed
+  106 |                 </motion.div>
+  107 |               </Link>
+> 108 |               <Link href="/opportunities">
+      |                     ^^^^
+  109 |                 <motion.div
+  110 |                   className={styles.liquidLink}
+  111 |                   whileHover={{ scale: 1.05 }}
+
+Expected '</', got 'href'
+
+Import trace:
+  Server Component:
+    ./src/components/layout/Navbar.tsx
+    ./src/app/layout.tsx
+[00:11:11.407] Server  LOG     ✓ Compiled in 50ms
+[00:11:15.036] Server  LOG     ✓ Compiled in 66ms
+[00:11:19.504] Server  LOG     ✓ Compiled in 105ms
+[00:12:44.988] Server  LOG     ✓ Compiled in 62ms
+[00:12:53.644] Server  LOG     ✓ Compiled in 57ms
+[00:13:35.568] Server  LOG     ✓ Compiled in 73ms
+[00:13:42.537] Server  LOG     ✓ Compiled in 62ms
+[00:14:45.702] Server  LOG     ✓ Compiled in 56ms
+[00:14:46.065] Browser ERROR   ./src/app/providers.tsx:14:28
+Parsing ecmascript source code failed
+  12 |                     {children}
+  13 |                 {/* </AuthGuard> */}
+> 14 |             </AuthProvider>
+     |                            ^
+> 15 |         </ThemeProvider>
+     | ^^^^^^^^^
+  16 |     );
+  17 | }
+  18 |
+
+Expected '</', got 'jsx text (
+        )'
+
+Import trace:
+  Server Component:
+    ./src/app/providers.tsx
+    ./src/app/layout.tsx
+[00:15:21.061] Browser ERROR   ./src/app/dashboard/page.tsx:16:11
+Parsing ecmascript source code failed
+  14 |     const savedOpportunities = [opportunities[1]];
+  15 |     const [selectedId, setSelectedId] = useState<string | null>(null);
+> 16 |     const {user}
+     |           ^^^^^^
+  17 |
+  18 |     return (
+  19 |         <main style={{ padding: '2rem 24px', maxWidth: '1200px', margin: '0 auto', minHeight: '100vh' }}>
+
+'const' declarations must be initialized
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:15:24.959] Server  LOG     ✓ Compiled in 41ms
+[00:15:39.057] Browser ERROR   ./src/app/dashboard/page.tsx:25:87
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? }.
+     |                                                                                       ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:15:43.051] Browser ERROR   ./src/app/dashboard/page.tsx:25:89
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? ()}.
+     |                                                                                         ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:15:45.056] Browser ERROR   ./src/app/dashboard/page.tsx:25:90
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (())}.
+     |                                                                                          ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got ')'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:15:47.061] Browser ERROR   ./src/app/dashboard/page.tsx:25:87
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? }.
+     |                                                                                       ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:15:51.065] Browser ERROR   ./src/app/dashboard/page.tsx:26:87
+Parsing ecmascript source code failed
+  24 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  25 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 26 |                         Welcome back! Here's an overview of your applications {user ? }.
+     |                                                                                       ^
+  27 |                     </p>
+  28 |                 </header>
+  29 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:15:54.050] Browser ERROR   ./src/app/dashboard/page.tsx:25:87
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? }.
+     |                                                                                       ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:15:58.052] Browser ERROR   ./src/app/dashboard/page.tsx:25:91
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? span}.
+     |                                                                                           ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:16:05.059] Browser ERROR   ./src/app/dashboard/page.tsx:25:89
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (): ()}.
+     |                                                                                         ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got ':'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:16:10.054] Browser ERROR   ./src/app/dashboard/page.tsx:25:93
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (<span): ()}.
+     |                                                                                             ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got ')'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:16:14.056] Browser ERROR   ./src/app/dashboard/page.tsx:25:106
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (<span></span>): ()}.
+     |                                                                                                          ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:16:20.059] Browser ERROR   ./src/app/dashboard/page.tsx:25:112
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (<span>(demo)</span>): ()}.
+     |                                                                                                                ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:16:27.052] Browser ERROR   ./src/app/dashboard/page.tsx:25:112
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (<span>(demo)</span>): ()}.
+     |                                                                                                                ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:16:31.965] Server  LOG     ✓ Compiled in 59ms
+[00:16:34.166] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:16:53.424] Server  LOG     ✓ Compiled in 55ms
+[00:16:54.054] Browser ERROR   ./src/app/providers.tsx:14:28
+Parsing ecmascript source code failed
+  12 |                     {children}
+  13 |                 {/* </AuthGuard> */}
+> 14 |             </AuthProvider>
+     |                            ^
+> 15 |         </ThemeProvider>
+     | ^^^^^^^^^
+  16 |     );
+  17 | }
+  18 |
+
+Expected '</', got 'jsx text (
+        )'
+
+Import trace:
+  Server Component:
+    ./src/app/providers.tsx
+    ./src/app/layout.tsx
+[00:16:57.715] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:17:12.664] Server  LOG     ✓ Compiled in 50ms
+[00:17:13.056] Browser ERROR   ./src/app/dashboard/page.tsx:25:104
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (<p>(demo)</span>): (<span> </span>)}.
+     |                                                                                                        ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got ')'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:17:17.250] Server  LOG     ✓ Compiled in 54ms
+[00:17:18.054] Browser ERROR   ./src/app/dashboard/page.tsx:25:116
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (<p>(demo)</p>): (<p> </span>)}.
+     |                                                                                                                    ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Expected '</', got ')'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:17:19.178] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <p> p 
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/dashboard" tree={[...]} params={{}} cacheNode={{rsc:Promise, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="dashboard/...">
+            <SegmentTrieNode>
+            <ClientPageRoot Component={function DashboardPage} serverProvidedParams={{...}}>
+              <DashboardPage params={Promise} searchParams={Promise}>
+                <main style={{padding:"2...", ...}}>
+                  <ScrollReveal width="100%">
+                    <div ref={{...}} style={{position:"...", ...}}>
+                      <motion.div variants={{hidden:{...}, ...}} initial="hidden" animate="visible" ...>
+                        <div style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                          <header style={{...}}>
+                            <h1>
+>                           <p style={{fontSize:"1.1rem",color:"var(--md-s..."}}>
+>                             <p>
+                              ...
+                  ...
+          ...
+        ...
+
+[00:17:35.726] Server  LOG     ✓ Compiled in 48ms
+[00:17:36.056] Browser ERROR   ./src/app/dashboard/page.tsx:25:168
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (<p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }>(demo)</p>): (<p> </p>)}.
+     |                                                                                                                                                                        ^^^^^^^^^^^^^^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
+
+Unknown regular expression flags.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:17:50.316] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <p> p 
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/dashboard" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} ...>
+          <SegmentViewNode type="page" pagePath="dashboard/...">
+            <SegmentTrieNode>
+            <ClientPageRoot Component={function DashboardPage} serverProvidedParams={{...}}>
+              <DashboardPage params={Promise} searchParams={Promise}>
+                <main style={{padding:"2...", ...}}>
+                  <ScrollReveal width="100%">
+                    <div ref={{current:null}} style={{position:"...", ...}}>
+                      <motion.div variants={{hidden:{...}, ...}} initial="hidden" animate="hidden" ...>
+                        <div style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                          <header style={{...}}>
+                            <h1>
+>                           <p style={{fontSize:"1.1rem",color:"var(--md-s..."}}>
+>                             <p>
+                              ...
+                  ...
+          ...
+        ...
+
+[00:17:50.317] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -20,450 +617,116 @@
 
 It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
 
-%s%s https://react.dev/link/hydration-mismatch 
+https://react.dev/link/hydration-mismatch
+[00:17:59.626] Server  LOG     ✓ Compiled in 60ms
+[00:18:00.051] Browser ERROR   ./src/app/dashboard/page.tsx:25:116
+Parsing ecmascript source code failed
+  23 |                     <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
+  24 |                     <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+> 25 |                         Welcome back! Here's an overview of your applications {user ? (<p>(demo)</p>): (<p> </span>)}.
+     |                                                                                                                    ^
+  26 |                     </p>
+  27 |                 </header>
+  28 |             </ScrollReveal>
 
-  ...
-    <body className="inter_5972..." suppressHydrationWarning={true}>
-      <Providers>
-        <J attribute="data-theme" defaultTheme="system" enableSystem={true}>
-          <V attribute="data-theme" defaultTheme="system" enableSystem={true}>
-            <script>
-            <AuthProvider>
-              <AuthGuard>
-                <Navbar>
-                  <nav className="Navbar-mod...">
-                    <LinkComponent>
-                    <div>
-                    <div style={{display:"flex", ...}}>
-                      <div>
-                      <motion.button className="Navbar-mod..." onClick={function toggleMenu} aria-label="Toggle menu" ...>
-                        <button className="Navbar-mod..." onClick={function toggleMenu} aria-label="Toggle menu" ...>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www...">
-                            <path
-                              d="M3 12H21"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
--                             data-darkreader-inline-stroke=""
--                             style={{--darkreader-inline-stroke:"currentColor"}}
-                            >
-                            <path
-                              d="M3 6H21"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
--                             data-darkreader-inline-stroke=""
--                             style={{--darkreader-inline-stroke:"currentColor"}}
-                            >
-                            <path
-                              d="M3 18H21"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
--                             data-darkreader-inline-stroke=""
--                             style={{--darkreader-inline-stroke:"currentColor"}}
-                            >
-                  ...
-                ...
-                  <Home params={Promise} searchParams={Promise}>
-                    <main style={{...}}>
-                      <ScrollReveal width="100%">
-                        <div ref={{current:null}} style={{position:"...", ...}}>
-                          <motion.div variants={{hidden:{...}, ...}} initial="hidden" animate="hidden" ...>
-                            <div style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
-                              <section style={{position:"...", ...}}>
-                                <div
-                                  style={{
-+                                   position: "absolute"
--                                   position: "absolute"
-+                                   top: "20%"
--                                   top: "20%"
-+                                   left: "10%"
--                                   left: "10%"
-+                                   width: "300px"
--                                   width: "300px"
-+                                   height: "300px"
--                                   height: "300px"
-+                                   background: "var(--md-sys-color-tertiary-container)"
-+                                   borderRadius: "50%"
-+                                   filter: "blur(80px)"
--                                   filter: "blur(80px)"
-+                                   opacity: 0.6
--                                   opacity: "0.6"
--                                   background-image: ""
--                                   background-position-x: ""
--                                   background-position-y: ""
--                                   background-size: ""
--                                   background-repeat: ""
--                                   background-attachment: ""
--                                   background-origin: ""
--                                   background-clip: ""
--                                   background-color: ""
--                                   border-top-left-radius: "50%"
--                                   border-top-right-radius: "50%"
--                                   border-bottom-right-radius: "50%"
--                                   border-bottom-left-radius: "50%"
--                                   --darkreader-inline-bg: "var(--darkreader-bg--md-sys-color-tertiary-container)"
-                                  }}
--                                 data-darkreader-inline-bg=""
-                                >
-                                <div
-                                  style={{
-+                                   position: "absolute"
--                                   position: "absolute"
-+                                   bottom: "20%"
--                                   bottom: "20%"
-+                                   right: "10%"
--                                   right: "10%"
-+                                   width: "400px"
--                                   width: "400px"
-+                                   height: "400px"
--                                   height: "400px"
-+                                   background: "var(--md-sys-color-secondary-container)"
-+                                   borderRadius: "50%"
-+                                   filter: "blur(100px)"
--                                   filter: "blur(100px)"
-+                                   opacity: 0.6
--                                   opacity: "0.6"
--                                   background-image: ""
--                                   background-position-x: ""
--                                   background-position-y: ""
--                                   background-size: ""
--                                   background-repeat: ""
--                                   background-attachment: ""
--                                   background-origin: ""
--                                   background-clip: ""
--                                   background-color: ""
--                                   border-top-left-radius: "50%"
--                                   border-top-right-radius: "50%"
--                                   border-bottom-right-radius: "50%"
--                                   border-bottom-left-radius: "50%"
--                                   --darkreader-inline-bg: "var(--darkreader-bg--md-sys-color-secondary-container)"
-                                  }}
--                                 data-darkreader-inline-bg=""
-                                >
-                                <GlassContainer style={{maxWidth:"...", ...}}>
-                                  <div className={"GlassCon..."} style={{maxWidth:"...", ...}}>
-                                    <h1>
-                                    <p
-                                      style={{
-+                                       fontSize: "1.25rem"
-+                                       color: "var(--md-sys-color-on-surface)"
--                                       color: "var(--md-sys-color-on-surface)"
-+                                       marginBottom: "2.5rem"
-+                                       lineHeight: 1.6
--                                       font-size: "1.25rem"
--                                       margin-bottom: "2.5rem"
--                                       line-height: "1.6"
--                                       --darkreader-inline-color: "var(--darkreader-text--md-sys-color-on-surface, va..."
-                                      }}
--                                     data-darkreader-inline-color=""
-                                    >
-+                                     Connect with faculty and companies for cutting-edge projects and internships. Tra...
-                                    ...
-                      <ScrollReveal width="100%" delay={0.2}>
-                        <div ref={{current:null}} style={{position:"...", ...}}>
-                          <motion.div variants={{hidden:{...}, ...}} initial="hidden" animate="hidden" ...>
-                            <div style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
-                              <section style={{padding:"0...", ...}}>
-                                <h2
-                                  style={{
-+                                   textAlign: "center"
-+                                   fontSize: "2.5rem"
-+                                   marginBottom: "3rem"
-+                                   color: "var(--md-sys-color-on-surface)"
--                                   color: "var(--md-sys-color-on-surface)"
--                                   text-align: "center"
--                                   font-size: "2.5rem"
--                                   margin-bottom: "3rem"
--                                   --darkreader-inline-color: "var(--darkreader-text--md-sys-color-on-surface, var(--..."
-                                  }}
--                                 data-darkreader-inline-color=""
-                                >
-+                                 Why use Student Portal?
-                                <div style={{display:"grid", ...}}>
-                                  <Card variant="elevated">
-                                    <motion.div className={"Card-mod..."} whileHover={{y:-5, ...}}>
-                                      <div className={"Card-mod..."} style={{}} ref={function useMotionRef.useCallback}>
-                                        <h3
-                                          style={{
-+                                           fontSize: "1.5rem"
-+                                           marginBottom: "1rem"
-+                                           color: "var(--md-sys-color-primary)"
--                                           color: "var(--md-sys-color-primary)"
--                                           font-size: "1.5rem"
--                                           margin-bottom: "1rem"
--                                           --darkreader-inline-color: "var(--darkreader-text--md-sys-color-primary, v..."
-                                          }}
--                                         data-darkreader-inline-color=""
-                                        >
-+                                         Smart Matching
-                                        ...
-                                  <Card variant="elevated">
-                                    <motion.div className={"Card-mod..."} whileHover={{y:-5, ...}}>
-                                      <div className={"Card-mod..."} style={{}} ref={function useMotionRef.useCallback}>
-                                        <h3
-                                          style={{
-+                                           fontSize: "1.5rem"
-+                                           marginBottom: "1rem"
-+                                           color: "var(--md-sys-color-primary)"
--                                           color: "var(--md-sys-color-primary)"
--                                           font-size: "1.5rem"
--                                           margin-bottom: "1rem"
--                                           --darkreader-inline-color: "var(--darkreader-text--md-sys-color-primary, v..."
-                                          }}
--                                         data-darkreader-inline-color=""
-                                        >
-+                                         Easy Tracking
-                                        ...
-                                  <Card variant="elevated">
-                                    <motion.div className={"Card-mod..."} whileHover={{y:-5, ...}}>
-                                      <div className={"Card-mod..."} style={{}} ref={function useMotionRef.useCallback}>
-                                        <h3
-                                          style={{
-+                                           fontSize: "1.5rem"
-+                                           marginBottom: "1rem"
-+                                           color: "var(--md-sys-color-primary)"
--                                           color: "var(--md-sys-color-primary)"
--                                           font-size: "1.5rem"
--                                           margin-bottom: "1rem"
--                                           --darkreader-inline-color: "var(--darkreader-text--md-sys-color-primary, v..."
-                                          }}
--                                         data-darkreader-inline-color=""
-                                        >
-+                                         Direct Connection
-                                        ...
+Expected '</', got ')'
 
-[06:41:18.081] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[06:41:18.189] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:18:08.098] Server  LOG     ✓ Compiled in 61ms
+[00:18:12.436] Server  LOG     ✓ Compiled in 50ms
+[00:18:13.051] Browser ERROR   ./src/app/dashboard/page.tsx:27:31
+Parsing ecmascript source code failed
+  25 |                         Welcome back! Here's an overview of your applications.
+  26 |                     </p>
+> 27 |                     {user ? ()}
+     |                               ^
+  28 |                 </header>
+  29 |             </ScrollReveal>
+  30 |
 
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+Expected '</', got '}'
 
-%s%s https://react.dev/link/hydration-mismatch 
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
 
-  ...
-    <body className="inter_5972..." suppressHydrationWarning={true}>
-      <Providers>
-        <J attribute="data-theme" defaultTheme="system" enableSystem={true}>
-          <V attribute="data-theme" defaultTheme="system" enableSystem={true}>
-            <script>
-            <AuthProvider>
-              <AuthGuard>
-                <Navbar>
-                  <nav className="Navbar-mod...">
-                    <LinkComponent>
-                    <div>
-                    <div style={{display:"flex", ...}}>
-                      <div>
-                      <motion.button className="Navbar-mod..." onClick={function toggleMenu} aria-label="Toggle menu" ...>
-                        <button className="Navbar-mod..." onClick={function toggleMenu} aria-label="Toggle menu" ...>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www...">
-                            <path
-                              d="M3 12H21"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
--                             data-darkreader-inline-stroke=""
--                             style={{--darkreader-inline-stroke:"currentColor"}}
-                            >
-                            <path
-                              d="M3 6H21"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
--                             data-darkreader-inline-stroke=""
--                             style={{--darkreader-inline-stroke:"currentColor"}}
-                            >
-                            <path
-                              d="M3 18H21"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
--                             data-darkreader-inline-stroke=""
--                             style={{--darkreader-inline-stroke:"currentColor"}}
-                            >
-                  ...
-                ...
-                  <Home params={Promise} searchParams={Promise}>
-                    <main style={{...}}>
-                      <ScrollReveal width="100%">
-                        <div ref={{current:null}} style={{position:"...", ...}}>
-                          <motion.div variants={{hidden:{...}, ...}} initial="hidden" animate="hidden" ...>
-                            <div style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
-                              <section style={{position:"...", ...}}>
-                                <div
-                                  style={{
-+                                   position: "absolute"
--                                   position: "absolute"
-+                                   top: "20%"
--                                   top: "20%"
-+                                   left: "10%"
--                                   left: "10%"
-+                                   width: "300px"
--                                   width: "300px"
-+                                   height: "300px"
--                                   height: "300px"
-+                                   background: "var(--md-sys-color-tertiary-container)"
-+                                   borderRadius: "50%"
-+                                   filter: "blur(80px)"
--                                   filter: "blur(80px)"
-+                                   opacity: 0.6
--                                   opacity: "0.6"
--                                   background-image: ""
--                                   background-position-x: ""
--                                   background-position-y: ""
--                                   background-size: ""
--                                   background-repeat: ""
--                                   background-attachment: ""
--                                   background-origin: ""
--                                   background-clip: ""
--                                   background-color: ""
--                                   border-top-left-radius: "50%"
--                                   border-top-right-radius: "50%"
--                                   border-bottom-right-radius: "50%"
--                                   border-bottom-left-radius: "50%"
--                                   --darkreader-inline-bg: "var(--darkreader-bg--md-sys-color-tertiary-container)"
-                                  }}
--                                 data-darkreader-inline-bg=""
-                                >
-                                <div
-                                  style={{
-+                                   position: "absolute"
--                                   position: "absolute"
-+                                   bottom: "20%"
--                                   bottom: "20%"
-+                                   right: "10%"
--                                   right: "10%"
-+                                   width: "400px"
--                                   width: "400px"
-+                                   height: "400px"
--                                   height: "400px"
-+                                   background: "var(--md-sys-color-secondary-container)"
-+                                   borderRadius: "50%"
-+                                   filter: "blur(100px)"
--                                   filter: "blur(100px)"
-+                                   opacity: 0.6
--                                   opacity: "0.6"
--                                   background-image: ""
--                                   background-position-x: ""
--                                   background-position-y: ""
--                                   background-size: ""
--                                   background-repeat: ""
--                                   background-attachment: ""
--                                   background-origin: ""
--                                   background-clip: ""
--                                   background-color: ""
--                                   border-top-left-radius: "50%"
--                                   border-top-right-radius: "50%"
--                                   border-bottom-right-radius: "50%"
--                                   border-bottom-left-radius: "50%"
--                                   --darkreader-inline-bg: "var(--darkreader-bg--md-sys-color-secondary-container)"
-                                  }}
--                                 data-darkreader-inline-bg=""
-                                >
-                                <GlassContainer style={{maxWidth:"...", ...}}>
-                                  <div className={"GlassCon..."} style={{maxWidth:"...", ...}}>
-                                    <h1>
-                                    <p
-                                      style={{
-+                                       fontSize: "1.25rem"
-+                                       color: "var(--md-sys-color-on-surface)"
--                                       color: "var(--md-sys-color-on-surface)"
-+                                       marginBottom: "2.5rem"
-+                                       lineHeight: 1.6
--                                       font-size: "1.25rem"
--                                       margin-bottom: "2.5rem"
--                                       line-height: "1.6"
--                                       --darkreader-inline-color: "var(--darkreader-text--md-sys-color-on-surface, va..."
-                                      }}
--                                     data-darkreader-inline-color=""
-                                    >
-+                                     Connect with faculty and companies for cutting-edge projects and internships. Tra...
-                                    ...
-                      <ScrollReveal width="100%" delay={0.2}>
-                        <div ref={{current:null}} style={{position:"...", ...}}>
-                          <motion.div variants={{hidden:{...}, ...}} initial="hidden" animate="hidden" ...>
-                            <div style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
-                              <section style={{padding:"0...", ...}}>
-                                <h2
-                                  style={{
-+                                   textAlign: "center"
-+                                   fontSize: "2.5rem"
-+                                   marginBottom: "3rem"
-+                                   color: "var(--md-sys-color-on-surface)"
--                                   color: "var(--md-sys-color-on-surface)"
--                                   text-align: "center"
--                                   font-size: "2.5rem"
--                                   margin-bottom: "3rem"
--                                   --darkreader-inline-color: "var(--darkreader-text--md-sys-color-on-surface, var(--..."
-                                  }}
--                                 data-darkreader-inline-color=""
-                                >
-+                                 Why use Student Portal?
-                                <div style={{display:"grid", ...}}>
-                                  <Card variant="elevated">
-                                    <motion.div className={"Card-mod..."} whileHover={{y:-5, ...}}>
-                                      <div className={"Card-mod..."} style={{}} ref={function useMotionRef.useCallback}>
-                                        <h3
-                                          style={{
-+                                           fontSize: "1.5rem"
-+                                           marginBottom: "1rem"
-+                                           color: "var(--md-sys-color-primary)"
--                                           color: "var(--md-sys-color-primary)"
--                                           font-size: "1.5rem"
--                                           margin-bottom: "1rem"
--                                           --darkreader-inline-color: "var(--darkreader-text--md-sys-color-primary, v..."
-                                          }}
--                                         data-darkreader-inline-color=""
-                                        >
-+                                         Smart Matching
-                                        ...
-                                  <Card variant="elevated">
-                                    <motion.div className={"Card-mod..."} whileHover={{y:-5, ...}}>
-                                      <div className={"Card-mod..."} style={{}} ref={function useMotionRef.useCallback}>
-                                        <h3
-                                          style={{
-+                                           fontSize: "1.5rem"
-+                                           marginBottom: "1rem"
-+                                           color: "var(--md-sys-color-primary)"
--                                           color: "var(--md-sys-color-primary)"
--                                           font-size: "1.5rem"
--                                           margin-bottom: "1rem"
--                                           --darkreader-inline-color: "var(--darkreader-text--md-sys-color-primary, v..."
-                                          }}
--                                         data-darkreader-inline-color=""
-                                        >
-+                                         Easy Tracking
-                                        ...
-                                  <Card variant="elevated">
-                                    <motion.div className={"Card-mod..."} whileHover={{y:-5, ...}}>
-                                      <div className={"Card-mod..."} style={{}} ref={function useMotionRef.useCallback}>
-                                        <h3
-                                          style={{
-+                                           fontSize: "1.5rem"
-+                                           marginBottom: "1rem"
-+                                           color: "var(--md-sys-color-primary)"
--                                           color: "var(--md-sys-color-primary)"
--                                           font-size: "1.5rem"
--                                           margin-bottom: "1rem"
--                                           --darkreader-inline-color: "var(--darkreader-text--md-sys-color-primary, v..."
-                                          }}
--                                         data-darkreader-inline-color=""
-                                        >
-+                                         Direct Connection
-                                        ...
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:18:14.290] Server  LOG     ✓ Compiled in 56ms
+[00:18:15.064] Browser ERROR   ./src/app/dashboard/page.tsx:27:31
+Parsing ecmascript source code failed
+  25 |                         Welcome back! Here's an overview of your applications.
+  26 |                     </p>
+> 27 |                     {user ? ():()}
+     |                               ^
+  28 |                 </header>
+  29 |             </ScrollReveal>
+  30 |
 
-[06:41:24.702] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[06:41:29.135] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+Expected '</', got ':'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:18:23.554] Server  LOG     ✓ Compiled in 48ms
+[00:18:24.055] Browser ERROR   ./src/app/dashboard/page.tsx:29:29
+Parsing ecmascript source code failed
+  27 |                     {user ? ( <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+  28 |                         Welcome back! Here's an overview of your applications.
+> 29 |                     </p>):()}
+     |                             ^
+  30 |                 </header>
+  31 |             </ScrollReveal>
+  32 |
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:18:31.055] Browser ERROR   ./src/app/dashboard/page.tsx:29:29
+Parsing ecmascript source code failed
+  27 |                     {user ? ( <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+  28 |                         (Demo)
+> 29 |                     </p>):()}
+     |                             ^
+  30 |                 </header>
+  31 |             </ScrollReveal>
+  32 |
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/page.tsx [Client Component Browser]
+    ./src/app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/page.tsx [Client Component SSR]
+    ./src/app/dashboard/page.tsx [Server Component]
+[00:18:40.047] Server  LOG     ✓ Compiled in 45ms
+[00:18:44.873] Server  LOG     ✓ Compiled in 59ms
+[00:18:52.193] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:18:58.507] Server  LOG     ✓ Compiled in 61ms
+[00:20:11.035] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:20:12.286] Browser LOG     faculty
+[00:20:24.184] Browser LOG     recruiter
