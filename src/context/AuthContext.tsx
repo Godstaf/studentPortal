@@ -13,10 +13,19 @@ interface User {
     created_at: string;
 }
 
+interface RegisterData {
+    username: string;
+    email: string;
+    full_name: string;
+    password: string;
+    role: "student" | "faculty" | "admin" | "recruiter";
+}
+
 interface AuthContextType {
     user: User | null;
     loading: boolean;
     login: (username: string, password: string) => Promise<void>;
+    register: (data: RegisterData) => Promise<void>;
     logout: () => void;
     isAuthenticated: boolean;
 }
@@ -85,6 +94,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         await fetchUser(data.access_token);
     };
 
+    const register = async (data: RegisterData) => {
+        const response = await fetch(`${API_URL}/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || 'Registration failed');
+        }
+        
+        // After successful registration, log the user in automatically
+        await login(data.username, data.password);
+    };
+
     const logout = () => {
         localStorage.removeItem('token');
         setUser(null);
@@ -92,7 +119,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, loading, login, logout, isAuthenticated: !!user }}>
+        <AuthContext.Provider value={{ user, loading, login, register, logout, isAuthenticated: !!user }}>
             {children}
         </AuthContext.Provider>
     );

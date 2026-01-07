@@ -12,16 +12,18 @@ export default function LoginPage() {
   const [state, setState] = useState<string>("login");
   const router = useRouter();
 
-    const { login } = useAuth();
+    const { login, register } = useAuth();
     const [error, setError] = useState<string | null>(null);
 
     const [formData, setFormData] = useState({
-        name: "",
+        full_name: "",
         username: "",
+        email: "",
         password: "",
+        role: "student" as "student" | "faculty" | "admin" | "recruiter",
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
@@ -36,9 +38,14 @@ export default function LoginPage() {
                 await login(formData.username, formData.password);
                 router.push("/dashboard");
             } else {
-                // signUp(formData);
-                // For now just redirect to roles as per original code
-                router.push("/roles");
+                await register({
+                    username: formData.username,
+                    email: formData.email,
+                    full_name: formData.full_name,
+                    password: formData.password,
+                    role: formData.role,
+                });
+                router.push("/dashboard"); // Register logs in automatically
             }
         } catch (err: any) {
             setError(err.message || "An error occurred");
@@ -100,36 +107,102 @@ export default function LoginPage() {
                         <div style={{ color: 'red', textAlign: 'center' }}>{error}</div>
                     )}
                     {state !== "login" && (
-                        <div>
-                            <label
-                                htmlFor="name"
-                                style={{
-                                    display: "block",
-                                    marginBottom: "0.5rem",
-                                    fontWeight: 500,
-                                }}
-                            >
-                                Name
-                            </label>
-                            <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                placeholder="name"
-                                required
-                                style={{
-                                    width: "100%",
-                                    padding: "12px",
-                                    borderRadius: "8px",
-                                    border: "1px solid var(--input-border)",
-                                    background: "var(--input-background)",
-                                    color: "var(--input-color)",
-                                    fontSize: "1rem",
-                                }}
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-                        </div>
+                        <>
+                            <div>
+                                <label
+                                    htmlFor="full_name"
+                                    style={{
+                                        display: "block",
+                                        marginBottom: "0.5rem",
+                                        fontWeight: 500,
+                                    }}
+                                >
+                                    Full Name
+                                </label>
+                                <input
+                                    id="full_name"
+                                    name="full_name"
+                                    type="text"
+                                    placeholder="John Doe"
+                                    required
+                                    style={{
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid var(--input-border)",
+                                        background: "var(--input-background)",
+                                        color: "var(--input-color)",
+                                        fontSize: "1rem",
+                                    }}
+                                    value={formData.full_name}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="email"
+                                    style={{
+                                        display: "block",
+                                        marginBottom: "0.5rem",
+                                        fontWeight: 500,
+                                    }}
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    placeholder="john@example.com"
+                                    required
+                                    style={{
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid var(--input-border)",
+                                        background: "var(--input-background)",
+                                        color: "var(--input-color)",
+                                        fontSize: "1rem",
+                                    }}
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="role"
+                                    style={{
+                                        display: "block",
+                                        marginBottom: "0.5rem",
+                                        fontWeight: 500,
+                                    }}
+                                >
+                                    Role
+                                </label>
+                                <select
+                                    id="role"
+                                    name="role"
+                                    required
+                                    style={{
+                                        width: "100%",
+                                        padding: "12px",
+                                        borderRadius: "8px",
+                                        border: "1px solid var(--input-border)",
+                                        background: "var(--input-background)",
+                                        color: "var(--input-color)",
+                                        fontSize: "1rem",
+                                    }}
+                                    value={formData.role}
+                                    onChange={handleChange}
+                                >
+                                    <option value="student">Student</option>
+                                    <option value="faculty">Faculty</option>
+                                    <option value="recruiter">Recruiter</option>
+                                    {/* Admin registration usually restricted, but keeping options open if needed */}
+                                    {/* <option value="admin">Admin</option> */}
+                                </select>
+                            </div>
+                        </>
                     )}
                     <div>
                         <label
@@ -179,6 +252,7 @@ export default function LoginPage() {
                             type="password"
                             placeholder="••••••••"
                             required
+                            minLength={4}
                             style={{
                                 width: "100%",
                                 padding: "12px",
@@ -218,7 +292,7 @@ export default function LoginPage() {
                         disabled={isLoading}
                         style={{ height: "48px", fontSize: "1rem", marginTop: "0.5rem" }}
                     >
-                        {isLoading ? "Signing in..." : "Sign In"}
+                        {isLoading ? (state === "login" ? "Signing in..." : "Signing up...") : (state === "login" ? "Sign In" : "Sign Up")}
                     </Button>
                 </form>
 
