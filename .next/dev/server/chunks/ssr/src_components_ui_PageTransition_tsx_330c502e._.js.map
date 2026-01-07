@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/kanishkchaurasia/Documents/studentPortal/src/components/ui/PageTransition.tsx"],"sourcesContent":["\"use client\";\n\nimport { motion } from \"framer-motion\";\n\nexport default function PageTransition({\n    children,\n}: {\n    children: React.ReactNode;\n}) {\n    return (\n        <motion.div\n            initial={{ opacity: 0, y: 20 }}\n            animate={{ opacity: 1, y: 0 }}\n            exit={{ opacity: 0, y: 20 }}\n            transition={{ duration: 0.3, ease: \"easeInOut\" }}\n        >\n            {children}\n        </motion.div>\n    );\n}\n"],"names":[],"mappings":";;;;;AAEA;AAFA;;;AAIe,SAAS,eAAe,EACnC,QAAQ,EAGX;IACG,qBACI,8OAAC,oMAAM,CAAC,GAAG;QACP,SAAS;YAAE,SAAS;YAAG,GAAG;QAAG;QAC7B,SAAS;YAAE,SAAS;YAAG,GAAG;QAAE;QAC5B,MAAM;YAAE,SAAS;YAAG,GAAG;QAAG;QAC1B,YAAY;YAAE,UAAU;YAAK,MAAM;QAAY;kBAE9C;;;;;;AAGb"}}]
+}

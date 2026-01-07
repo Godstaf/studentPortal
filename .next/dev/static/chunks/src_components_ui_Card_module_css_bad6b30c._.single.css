@@ -1,0 +1,29 @@
+/* [project]/src/components/ui/Card.module.css [app-client] (css) */
+.Card-module__b6YjYG__card {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  border-radius: 12px;
+  padding: 16px;
+  transition: box-shadow .3s cubic-bezier(.4, 0, .2, 1);
+  overflow: hidden;
+}
+
+.Card-module__b6YjYG__elevated {
+  box-shadow: 0 1px 3px 1px #00000026, 0 1px 2px #0000004d;
+}
+
+.Card-module__b6YjYG__elevated:hover {
+  box-shadow: 0 2px 4px 1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+}
+
+.Card-module__b6YjYG__outlined {
+  border: 1px solid var(--md-sys-color-secondary);
+  background-color: var(--md-sys-color-surface);
+}
+
+.Card-module__b6YjYG__filled {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/*# sourceMappingURL=src_components_ui_Card_module_css_bad6b30c._.single.css.map*/

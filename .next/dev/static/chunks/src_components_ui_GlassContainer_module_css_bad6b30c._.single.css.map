@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/components/ui/GlassContainer.module.css"],"sourcesContent":[".glassContainer {\n    background: var(--glass-background);\n    backdrop-filter: blur(var(--glass-blur));\n    -webkit-backdrop-filter: blur(var(--glass-blur));\n    border: 1px solid var(--glass-border);\n    box-shadow: var(--glass-shadow);\n    border-radius: 16px;\n    padding: 24px;\n    color: var(--md-sys-color-on-surface);\n    transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n\n.glassContainer:hover {\n    transform: translateY(-2px);\n    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;;AAYA"}}]
+}

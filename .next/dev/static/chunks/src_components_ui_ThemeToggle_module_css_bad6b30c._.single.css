@@ -1,0 +1,43 @@
+/* [project]/src/components/ui/ThemeToggle.module.css [app-client] (css) */
+.ThemeToggle-module__BDCMra__toggle {
+  background: var(--liquid-bg);
+  border: 1px solid var(--liquid-border);
+  cursor: pointer;
+  color: var(--md-sys-color-on-surface);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  transition: all .3s cubic-bezier(.4, 0, .2, 1);
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.ThemeToggle-module__BDCMra__toggle:before {
+  content: "";
+  background: linear-gradient(120deg, transparent, var(--liquid-shine), transparent);
+  transition: transform .5s;
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+}
+
+.ThemeToggle-module__BDCMra__toggle:hover {
+  background: var(--liquid-hover-bg);
+  border-color: var(--liquid-hover-border);
+  box-shadow: 0 0 15px var(--liquid-hover-shadow);
+  color: var(--md-sys-color-primary);
+}
+
+.ThemeToggle-module__BDCMra__toggle:hover:before {
+  transform: translateX(100%);
+}
+
+.ThemeToggle-module__BDCMra__placeholder {
+  width: 36px;
+  height: 36px;
+}
+
+/*# sourceMappingURL=src_components_ui_ThemeToggle_module_css_bad6b30c._.single.css.map*/

@@ -12,7 +12,7 @@ from database import (
     enrollments_collection, 
     assignments_collection, 
     submissions_collection
-)
+) 
 from bson import ObjectId
 
 # --- Helper ---
