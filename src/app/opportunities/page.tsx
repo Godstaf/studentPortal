@@ -12,6 +12,7 @@ export default function OpportunitiesPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState<"All" | "Project" | "Internship">("All");
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   // Extract all unique skills from opportunities
   const allSkills = useMemo(() => {
@@ -91,20 +92,29 @@ export default function OpportunitiesPage() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass glow-on-hover"
         style={{
           marginBottom: "2rem",
-          padding: "1.5rem",
-          borderRadius: "16px",
+          position: "relative",
         }}
       >
-        {/* Search Input */}
-        <div style={{ marginBottom: "1.5rem" }}>
+        {/* Search Bar and Filter Button */}
+        <div
+          className="glass glow-on-hover"
+          style={{
+            display: "flex",
+            gap: "1rem",
+            alignItems: "center",
+            padding: "1rem",
+            borderRadius: "16px",
+          }}
+        >
+          {/* Search Input */}
           <div
             style={{
               position: "relative",
               display: "flex",
               alignItems: "center",
+              flex: 1,
             }}
           >
             <span
@@ -160,109 +170,229 @@ export default function OpportunitiesPage() {
               </button>
             )}
           </div>
-        </div>
 
-        {/* Type Filters */}
-        <div style={{ marginBottom: "1.5rem" }}>
-          <h3
+          {/* Filter Button */}
+          <motion.button
+            onClick={() => setShowFilters(!showFilters)}
+            onMouseEnter={() => setShowFilters(true)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             style={{
-              fontSize: "0.875rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "0.875rem 1.5rem",
+              borderRadius: "12px",
+              border: hasActiveFilters
+                ? "2px solid var(--md-sys-color-primary)"
+                : "1px solid var(--liquid-border)",
+              background: hasActiveFilters
+                ? "var(--md-sys-color-primary-container)"
+                : "var(--liquid-bg)",
+              color: hasActiveFilters
+                ? "var(--md-sys-color-on-primary-container)"
+                : "var(--md-sys-color-on-surface)",
+              fontSize: "1rem",
               fontWeight: 600,
-              marginBottom: "0.75rem",
-              color: "var(--md-sys-color-on-surface-variant)",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
+              cursor: "pointer",
+              transition: "all 0.3s var(--motion-easing-standard)",
+              position: "relative",
+              whiteSpace: "nowrap",
             }}
           >
-            Type
-          </h3>
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-            {(["All", "Project", "Internship"] as const).map((type) => (
-              <motion.button
-                key={type}
-                onClick={() => setSelectedType(type)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            <span style={{ fontSize: "1.25rem" }}>⚙️</span>
+            Filters
+            {hasActiveFilters && (
+              <span
                 style={{
-                  padding: "0.5rem 1.25rem",
-                  borderRadius: "20px",
-                  border: selectedType === type
-                    ? "2px solid var(--md-sys-color-primary)"
-                    : "1px solid var(--liquid-border)",
-                  fontSize: "0.875rem",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  transition: "all 0.3s var(--motion-easing-standard)",
-                  background:
-                    selectedType === type
-                      ? "var(--md-sys-color-primary)"
-                      : "var(--liquid-bg)",
-                  color:
-                    selectedType === type
-                      ? "var(--md-sys-color-on-primary)"
-                      : "var(--md-sys-color-on-surface)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minWidth: "20px",
+                  height: "20px",
+                  padding: "0 6px",
+                  borderRadius: "10px",
+                  background: "var(--md-sys-color-primary)",
+                  color: "var(--md-sys-color-on-primary)",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
                 }}
               >
-                {type}
-              </motion.button>
-            ))}
-          </div>
+                {(selectedType !== "All" ? 1 : 0) + selectedSkills.length}
+              </span>
+            )}
+            <motion.span
+              animate={{ rotate: showFilters ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ fontSize: "0.875rem" }}
+            >
+              ▼
+            </motion.span>
+          </motion.button>
         </div>
 
-        {/* Skill Filters */}
-        <div style={{ marginBottom: "1rem" }}>
-          <h3
-            style={{
-              fontSize: "0.875rem",
-              fontWeight: 600,
-              marginBottom: "0.75rem",
-              color: "var(--md-sys-color-on-surface-variant)",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-            }}
-          >
-            Skills
-          </h3>
-          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-            {allSkills.map((skill) => (
-              <motion.button
-                key={skill}
-                onClick={() => toggleSkill(skill)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  padding: "0.375rem 0.875rem",
-                  borderRadius: "16px",
-                  fontSize: "0.8rem",
-                  fontWeight: 500,
-                  cursor: "pointer",
-                  transition: "all 0.3s var(--motion-easing-standard)",
-                  border: selectedSkills.includes(skill)
-                    ? "2px solid var(--md-sys-color-primary)"
-                    : "1px solid var(--liquid-border)",
-                  background: selectedSkills.includes(skill)
-                    ? "var(--md-sys-color-primary-container)"
-                    : "var(--liquid-bg)",
-                  color: selectedSkills.includes(skill)
-                    ? "var(--md-sys-color-on-primary-container)"
-                    : "var(--md-sys-color-on-surface)",
-                }}
-              >
-                {selectedSkills.includes(skill) && "✓ "}
-                {skill}
-              </motion.button>
-            ))}
-          </div>
-        </div>
+        {/* Filter Dropdown Panel */}
+        <AnimatePresence>
+          {showFilters && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              onMouseLeave={() => setShowFilters(false)}
+              className="glass"
+              style={{
+                position: "absolute",
+                top: "calc(100% + 0.5rem)",
+                right: 0,
+                zIndex: 10,
+                minWidth: "400px",
+                maxWidth: "500px",
+                padding: "1.5rem",
+                borderRadius: "16px",
+                boxShadow: "0 10px 40px rgba(0, 0, 0, 0.2)",
+                border: "1px solid var(--md-sys-color-outline-variant)",
+                background: "var(--md-sys-color-surface)",
+              }}
+            >
+              {/* Type Filters */}
+              <div style={{ marginBottom: "1.5rem" }}>
+                <h3
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    marginBottom: "0.75rem",
+                    color: "var(--md-sys-color-on-surface-variant)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  Type
+                </h3>
+                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                  {(["All", "Project", "Internship"] as const).map((type) => (
+                    <motion.button
+                      key={type}
+                      onClick={() => setSelectedType(type)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{
+                        padding: "0.5rem 1.25rem",
+                        borderRadius: "20px",
+                        border: selectedType === type
+                          ? "2px solid var(--md-sys-color-primary)"
+                          : "1px solid var(--liquid-border)",
+                        fontSize: "0.875rem",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                        transition: "all 0.3s var(--motion-easing-standard)",
+                        background:
+                          selectedType === type
+                            ? "var(--md-sys-color-primary)"
+                            : "var(--liquid-bg)",
+                        color:
+                          selectedType === type
+                            ? "var(--md-sys-color-on-primary)"
+                            : "var(--md-sys-color-on-surface)",
+                      }}
+                    >
+                      {type}
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
 
-        {/* Clear Filters & Results Count */}
-        <div
+              {/* Skill Filters */}
+              <div style={{ marginBottom: "1rem" }}>
+                <h3
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    marginBottom: "0.75rem",
+                    color: "var(--md-sys-color-on-surface-variant)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  Skills
+                </h3>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    flexWrap: "wrap",
+                    maxHeight: "200px",
+                    overflowY: "auto",
+                    padding: "0.5rem",
+                  }}
+                >
+                  {allSkills.map((skill) => (
+                    <motion.button
+                      key={skill}
+                      onClick={() => toggleSkill(skill)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{
+                        padding: "0.375rem 0.875rem",
+                        borderRadius: "16px",
+                        fontSize: "0.8rem",
+                        fontWeight: 500,
+                        cursor: "pointer",
+                        transition: "all 0.3s var(--motion-easing-standard)",
+                        border: selectedSkills.includes(skill)
+                          ? "2px solid var(--md-sys-color-primary)"
+                          : "1px solid var(--liquid-border)",
+                        background: selectedSkills.includes(skill)
+                          ? "var(--md-sys-color-primary-container)"
+                          : "var(--liquid-bg)",
+                        color: selectedSkills.includes(skill)
+                          ? "var(--md-sys-color-on-primary-container)"
+                          : "var(--md-sys-color-on-surface)",
+                      }}
+                    >
+                      {selectedSkills.includes(skill) && "✓ "}
+                      {skill}
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Clear Filters Button */}
+              {hasActiveFilters && (
+                <div
+                  style={{
+                    paddingTop: "1rem",
+                    borderTop: "1px solid var(--md-sys-color-outline-variant)",
+                  }}
+                >
+                  <Button
+                    variant="text"
+                    onClick={clearFilters}
+                    style={{
+                      fontSize: "0.875rem",
+                      fontWeight: 600,
+                      padding: "0.5rem 1rem",
+                      width: "100%",
+                    }}
+                  >
+                    Clear All Filters
+                  </Button>
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Results Count */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           style={{
+            marginTop: "1rem",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            paddingTop: "1rem",
-            borderTop: "1px solid var(--md-sys-color-outline-variant)",
+            paddingLeft: "0.5rem",
           }}
         >
           <span
@@ -274,20 +404,7 @@ export default function OpportunitiesPage() {
           >
             {filteredOpportunities.length} {filteredOpportunities.length === 1 ? "opportunity" : "opportunities"} found
           </span>
-          {hasActiveFilters && (
-            <Button
-              variant="text"
-              onClick={clearFilters}
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: 600,
-                padding: "0.5rem 1rem",
-              }}
-            >
-              Clear Filters
-            </Button>
-          )}
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Opportunities Grid */}
