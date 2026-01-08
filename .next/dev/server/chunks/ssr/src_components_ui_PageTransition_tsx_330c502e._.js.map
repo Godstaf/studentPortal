@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/codes/Hackathons/pict_hackathon/studentPortal/src/components/ui/PageTransition.tsx"],"sourcesContent":["\"use client\";\r\n\r\nimport { motion } from \"framer-motion\";\r\n\r\nexport default function PageTransition({\r\n    children,\r\n}: {\r\n    children: React.ReactNode;\r\n}) {\r\n    return (\r\n        <motion.div\r\n            initial={{ opacity: 0, y: 20 }}\r\n            animate={{ opacity: 1, y: 0 }}\r\n            exit={{ opacity: 0, y: 20 }}\r\n            transition={{ duration: 0.3, ease: \"easeInOut\" }}\r\n        >\r\n            {children}\r\n        </motion.div>\r\n    );\r\n}\r\n"],"names":[],"mappings":";;;;;AAEA;AAFA;;;AAIe,SAAS,eAAe,EACnC,QAAQ,EAGX;IACG,qBACI,8OAAC,oMAAM,CAAC,GAAG;QACP,SAAS;YAAE,SAAS;YAAG,GAAG;QAAG;QAC7B,SAAS;YAAE,SAAS;YAAG,GAAG;QAAE;QAC5B,MAAM;YAAE,SAAS;YAAG,GAAG;QAAG;QAC1B,YAAY;YAAE,UAAU;YAAK,MAAM;QAAY;kBAE9C;;;;;;AAGb"}}]
-}

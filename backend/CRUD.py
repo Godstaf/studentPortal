@@ -60,6 +60,7 @@ class User(BaseModel):
     hashed_password: str
     role: Literal["student", "faculty", "admin", "recruiter"]
     is_active: bool = True
+    is_verified: bool = False
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 class JobPosting(BaseModel):
