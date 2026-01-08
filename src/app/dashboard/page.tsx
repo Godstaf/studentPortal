@@ -7,23 +7,127 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useAuth } from "@/context/AuthContext";
 import { opportunities } from "@/data/opportunities";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function DashboardPage() {
-    // Mock data for dashboard
-    const appliedOpportunities = [opportunities[0], opportunities[3]];
-    const savedOpportunities = [opportunities[1]];
     const [selectedId, setSelectedId] = useState<string | null>(null);
-    const {user} = useAuth()
+    const { user } = useAuth();
+    const [appliedOpportunities, setAppliedOpportunities] = useState<any[]>([]);
+    const [savedOpportunities, setSavedOpportunities] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    // Mock JSON Data simulating API response
+    const mockApiResponse = {
+        applied: [
+            {
+                id: '1',
+                title: 'AI-Driven Traffic Management System',
+                type: 'Project',
+                organization: 'Dr. Sarah Smith (CS Dept)',
+                description: 'Developing a reinforcement learning model to optimize traffic signal timings in real-time using camera feeds.',
+                skills: ['Python', 'PyTorch', 'Computer Vision'],
+                postedDate: '2025-11-20',
+                deadline: '2025-12-15',
+                status: 'Under Review',
+                submittedDate: '2025-11-25'
+            },
+            {
+                id: '4',
+                title: 'Data Science Intern',
+                type: 'Internship',
+                organization: 'DataMinds Corp',
+                description: 'Analyze large datasets to identify market trends. Proficiency in SQL and Pandas required.',
+                skills: ['Python', 'SQL', 'Pandas', 'Tableau'],
+                postedDate: '2025-11-22',
+                deadline: '2025-12-05',
+                status: 'Shortlisted',
+                submittedDate: '2025-11-28'
+            }
+        ],
+        saved: [
+            {
+                id: '2',
+                title: 'Frontend Developer Intern',
+                type: 'Internship',
+                organization: 'TechFlow Solutions',
+                description: 'Work on our core product dashboard using React and Next.js. Experience with modern UI libraries is a plus.',
+                skills: ['React', 'Next.js', 'TypeScript', 'CSS'],
+                postedDate: '2025-11-25',
+                deadline: '2025-12-10'
+            }
+        ]
+    };
+
+    // Simulate API Call
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Set data from mock response
+            setAppliedOpportunities(mockApiResponse.applied);
+            setSavedOpportunities(mockApiResponse.saved);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return (
+            <main style={{ padding: '2rem 24px', maxWidth: '1200px', margin: '0 auto', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div style={{ textAlign: 'center' }}>
+                    <div style={{ 
+                        width: '48px', 
+                        height: '48px', 
+                        border: '4px solid var(--md-sys-color-surface-variant)', 
+                        borderTop: '4px solid var(--md-sys-color-primary)', 
+                        borderRadius: '50%', 
+                        animation: 'spin 1s linear infinite',
+                        margin: '0 auto 1rem' 
+                    }}>
+                        <style dangerouslySetInnerHTML={{__html: `
+                            @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                        `}} />
+                    </div>
+                    <p style={{ color: 'var(--md-sys-color-secondary)' }}>Loading your dashboard...</p>
+                </div>
+            </main>
+        );
+    }
 
     return (
         <main style={{ padding: '2rem 24px', maxWidth: '1200px', margin: '0 auto', minHeight: '100vh' }}>
             <ScrollReveal width="100%">
-                <header style={{ marginBottom: '3rem' }}>
-                    <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Student Dashboard</h1>
-                    <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
-                        Welcome back! Here's an overview of your applications.
-                    </p>
+                <header style={{ marginBottom: '3rem', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                    {/* User Avatar */}
+                    <div style={{
+                        width: '80px',
+                        height: '80px',
+                        borderRadius: '50%',
+                        background: 'linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary))',
+                        color: 'var(--md-sys-color-on-primary)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '2.5rem',
+                        fontWeight: 'bold',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+                    }}>
+                        {user?.full_name ? user.full_name.charAt(0).toUpperCase() : 'S'}
+                    </div>
+                    
+                    <div>
+                        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>
+                            Welcome, {user?.full_name?.split(' ')[0] || 'Student'}!
+                        </h1>
+                        <p style={{ fontSize: '1.1rem', color: 'var(--md-sys-color-secondary)' }}>
+                            Here's an overview of your applications.
+                        </p>
+                    </div>
                 </header>
             </ScrollReveal>
 
@@ -51,7 +155,7 @@ export default function DashboardPage() {
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
                                         <div style={{ textAlign: 'right' }}>
                                             <span style={{ display: 'block', fontSize: '0.875rem', color: 'var(--md-sys-color-secondary)' }}>Status</span>
-                                            <span style={{ fontWeight: 600, color: 'var(--md-sys-color-primary)' }}>Under Review</span>
+                                            <span style={{ fontWeight: 600, color: opp.status === 'Shortlisted' ? '#4CAF50' : 'var(--md-sys-color-primary)' }}>{opp.status}</span>
                                         </div>
                                         <Button variant="glass" style={{ pointerEvents: 'auto' }}>View Status</Button>
                                     </div>
@@ -81,7 +185,12 @@ export default function DashboardPage() {
                                 <Card variant="elevated" style={{ height: '100%', pointerEvents: 'none' }}>
                                     <motion.h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{opp.title}</motion.h3>
                                     <motion.p style={{ color: 'var(--md-sys-color-secondary)', marginBottom: '1rem' }}>{opp.organization}</motion.p>
-                                    <Button variant="glass" style={{ pointerEvents: 'auto' }}>View Details</Button>
+                                    <div style={{ display: 'flex', gap: '0.5rem', marginTop: 'auto' }}>
+                                        <Button variant="glass" style={{ pointerEvents: 'auto' }}>View Details</Button>
+                                        <Link href={`/opportunities/${opp.id}`} onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+                                            <Button variant="filled" style={{ pointerEvents: 'auto' }}>Apply Now</Button>
+                                        </Link>
+                                    </div>
                                 </Card>
                             </motion.div>
                         ))}
@@ -197,7 +306,7 @@ export default function DashboardPage() {
                                     <div style={{ marginBottom: '2rem' }}>
                                         <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 600 }}>Required Skills</h3>
                                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                            {opp.skills.map(skill => (
+                                            {opp.skills.map((skill: string) => (
                                                 <span key={skill} style={{
                                                     fontSize: '0.9rem',
                                                     padding: '4px 12px',

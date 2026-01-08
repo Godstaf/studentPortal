@@ -3,14 +3,32 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-interface User {
-    id?: string;
+export interface User {
+    id: string;
     username: string;
     email: string;
     full_name: string;
     role: "student" | "faculty" | "admin" | "recruiter";
     is_active: boolean;
     created_at: string;
+}
+
+export interface Student extends User {
+    collegeName: string;
+    degree: string;
+    branch: string;
+    yearsOfStudy: number;
+    expectedGraduationYear: number;
+    rollNumber: string;
+    collegeEmail: string;
+}
+
+export interface Faculty extends User {
+    institution: string;
+    department: string;
+    designation: string;
+    profileLink: string;
+    experience: number;
 }
 
 interface RegisterData {

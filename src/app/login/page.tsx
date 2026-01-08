@@ -45,7 +45,28 @@ export default function LoginPage() {
                     password: formData.password,
                     role: formData.role,
                 });
-                router.push("/dashboard"); // Register logs in automatically
+                // switch(formData.role) {
+                //     case "student":
+                //         router.push("/studentForm");
+                //         break;
+                //     case "faculty":
+                //         router.push("/forms/faculty");
+                //         break;
+                //     case "recruiter":
+                //         router.push("/forms/recruiter");
+                //         break;
+                // } // Register logs in automatically
+                switch(formData.role){
+                    case "student":
+                        router.push("/dashboard");
+                        break;
+                    case "faculty":
+                        router.push("/facultydash");
+                        break;
+                    case "recruiter":
+                        router.push("/recruiter_dashboard");
+                        break;
+                }
             }
         } catch (err: any) {
             setError(err.message || "An error occurred");

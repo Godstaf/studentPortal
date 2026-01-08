@@ -1,141 +1,374 @@
-[00:00:02.127] Server  LOG     ✓ Ready in 1513ms
-[00:00:05.325] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:05.530] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:02.202] Server  LOG     ✓ Ready in 1538ms
+[00:01:06.293] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:04:04.816] Server  LOG     ✓ Compiled in 93ms
+[00:04:05.276] Browser ERROR   ./src/app/dashboard/page.tsx:62:5
+Parsing ecmascript source code failed
+  60 |
+  61 |     // Simulate API Call
+> 62 |     import { useEffect } from "react";
+     |     ^^^^^^
+  63 |
+  64 |     useEffect(() => {
+  65 |         const fetchData = async () => {
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
+'import', and 'export' cannot be used outside of module code
+[00:04:13.228] Server  LOG     ✓ Compiled in 49ms
+[00:04:13.549] Server  ERROR   ⨯ ReferenceError: useEffect is not defined
+[00:04:14.276] Browser ERROR   uncaughtError: ReferenceError: useEffect is not defined
+[00:04:14.919] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:04:15.104] Server  LOG     ✓ Compiled in 51ms
+[00:07:12.118] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:09:24.387] Server  LOG     ✓ Compiled in 56ms
+[00:09:25.269] Browser ERROR   ./src/app/providers.tsx:14:28
+Parsing ecmascript source code failed
+  12 |                     {children}
+  13 |                 {/* </AuthGuard> */}
+> 14 |             </AuthProvider>
+     |                            ^
+> 15 |         </ThemeProvider>
+     | ^^^^^^^^^
+  16 |     );
+  17 | }
+  18 |
 
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+Expected '</', got 'jsx text (
+        )'
 
-%s%s https://react.dev/link/hydration-mismatch 
+Import trace:
+  Server Component:
+    ./src/app/providers.tsx
+    ./src/app/layout.tsx
+[00:09:26.865] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:14:02.372] Server  LOG     ✓ Compiled in 57ms
+[00:14:03.277] Browser ERROR   ./src/app/providers.tsx:13:29
+Parsing ecmascript source code failed
+  11 |                 {/* <AuthGuard> */}
+  12 |                     {children}
+> 13 |                 </AuthGuard>
+     |                             ^
+> 14 |             </AuthProvider>
+     | ^^^^^^^^^^^^^
+  15 |         </ThemeProvider>
+  16 |     );
+  17 | }
 
-  ...
-    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
-      <RedirectBoundary>
-        <RedirectErrorBoundary router={{...}}>
-          <InnerLayoutRouter url="/opportuni..." tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} ...>
-            <SegmentViewNode type="page" pagePath="opportunit...">
-              <SegmentTrieNode>
-              <ClientPageRoot Component={function OpportunitiesPage} serverProvidedParams={{...}}>
-                <OpportunitiesPage params={Promise} searchParams={Promise}>
-                  <main style={{padding:"2...", ...}}>
-                    <header>
-                    <motion.div initial={{opacity:0,y:-20}} animate={{opacity:1,y:0}} style={{...}}>
-                      <div style={{...}} ref={function useMotionRef.useCallback}>
-                        <div className="glass glow..." style={{display:"flex", ...}}>
-                          <div style={{position:"...", ...}}>
-                            <span>
-                            <input
-                              type="text"
-                              placeholder="Search opportunities by title, organization, or description..."
-                              value=""
-                              onChange={function onChange}
-                              style={{width:"100%",padding:"0.875rem 1...",fontSize:"1rem",borderRadius:"12px",border:"1px solid ...", ...}}
-                              onFocus={function onFocus}
-                              onBlur={function onBlur}
--                             fdprocessedid="pwj7q4"
-                            >
-                          <motion.button onClick={function onClick} onMouseEnter={function onMouseEnter} ...>
-                            <button
-                              onClick={function onClick}
-                              onMouseEnter={function onMouseEnter}
-                              tabIndex={0}
-                              style={{display:"flex",alignItems:"center",gap:"0.5rem",padding:"0.875rem 1...",borderRadius:"12px",border:"1...", ...}}
-                              ref={function useMotionRef.useCallback}
--                             fdprocessedid="7h4fig"
-                            >
-                        ...
-                    <div style={{display:"grid", ...}}>
-                      ...
-                        <div className={"Card-mod..."} style={{display:"flex", ...}} ...>
-                          <div>
-                          <motion.p>
-                          <div>
-                          <div style={{...}}>
-                            <span>
-                            <Button variant="glass" style={{...}}>
-                              <motion.button className={"Button-m..."} whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
-                                <button
-                                  className={"Button-module__8RiFmG__button Button-module__8RiFmG__glass "}
-                                  tabIndex={0}
-                                  style={{pointerEvents:"auto",fontSize:"0.9rem",fontWeight:600}}
-                                  ref={function useMotionRef.useCallback}
--                                 fdprocessedid="d559hh"
-                                >
-+                                 Read More
-                      ...
-                        <div className={"Card-mod..."} style={{display:"flex", ...}} ...>
-                          <div>
-                          <motion.p>
-                          <div>
-                          <div style={{...}}>
-                            <span>
-                            <Button variant="glass" style={{...}}>
-                              <motion.button className={"Button-m..."} whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
-                                <button
-                                  className={"Button-module__8RiFmG__button Button-module__8RiFmG__glass "}
-                                  tabIndex={0}
-                                  style={{pointerEvents:"auto",fontSize:"0.9rem",fontWeight:600}}
-                                  ref={function useMotionRef.useCallback}
--                                 fdprocessedid="h47ki"
-                                >
-+                                 Read More
-                      ...
-                        <div className={"Card-mod..."} style={{display:"flex", ...}} ...>
-                          <div>
-                          <motion.p>
-                          <div>
-                          <div style={{...}}>
-                            <span>
-                            <Button variant="glass" style={{...}}>
-                              <motion.button className={"Button-m..."} whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
-                                <button
-                                  className={"Button-module__8RiFmG__button Button-module__8RiFmG__glass "}
-                                  tabIndex={0}
-                                  style={{pointerEvents:"auto",fontSize:"0.9rem",fontWeight:600}}
-                                  ref={function useMotionRef.useCallback}
--                                 fdprocessedid="8ap34g"
-                                >
-+                                 Read More
-                      ...
-                        <div className={"Card-mod..."} style={{display:"flex", ...}} ...>
-                          <div>
-                          <motion.p>
-                          <div>
-                          <div style={{...}}>
-                            <span>
-                            <Button variant="glass" style={{...}}>
-                              <motion.button className={"Button-m..."} whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
-                                <button
-                                  className={"Button-module__8RiFmG__button Button-module__8RiFmG__glass "}
-                                  tabIndex={0}
-                                  style={{pointerEvents:"auto",fontSize:"0.9rem",fontWeight:600}}
-                                  ref={function useMotionRef.useCallback}
--                                 fdprocessedid="n4cdop"
-                                >
-+                                 Read More
-                      ...
-                        <div className={"Card-mod..."} style={{display:"flex", ...}} ...>
-                          <div>
-                          <motion.p>
-                          <div>
-                          <div style={{...}}>
-                            <span>
-                            <Button variant="glass" style={{...}}>
-                              <motion.button className={"Button-m..."} whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
-                                <button
-                                  className={"Button-module__8RiFmG__button Button-module__8RiFmG__glass "}
-                                  tabIndex={0}
-                                  style={{pointerEvents:"auto",fontSize:"0.9rem",fontWeight:600}}
-                                  ref={function useMotionRef.useCallback}
--                                 fdprocessedid="eab8wc"
-                                >
-+                                 Read More
-                    ...
-            ...
-          ...
+Expected '</', got 'jsx text (
+            )'
 
-[00:01:22.468] Server  LOG     ✓ Compiled in 75ms
+Import trace:
+  Server Component:
+    ./src/app/providers.tsx
+    ./src/app/layout.tsx
+[00:27:17.549] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:28:31.010] Server  LOG     ✓ Compiled in 50ms
+[00:31:12.012] Server  LOG     ✓ Compiled in 96ms
+[00:31:12.122] Browser ERROR   uncaughtError: ReferenceError: Link is not defined
+[00:31:13.741] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:31:13.990] Server  LOG     ✓ Compiled in 102ms
+[00:31:18.918] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:45:37.296] Server  LOG     ✓ Compiled in 70ms
+[00:56:19.740] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:56:39.645] Server  LOG     ✓ Compiled in 49ms
+[01:02:32.266] Browser ERROR   ./src/app/login/page.tsx:63:11
+Parsing ecmascript source code failed
+  61 |         } catch (err: any) {
+  62 |             setError(err.message || "An error occurred");
+> 63 |         } finally {
+     |           ^^^^^^^
+  64 |             setIsLoading(false);
+  65 |         }
+  66 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:02:41.264] Browser ERROR   ./src/app/login/page.tsx:59:17
+Parsing ecmascript source code failed
+  57 |                 //         break;
+  58 |                 switch(form)
+> 59 |                 } // Register logs in automatically
+     |                 ^
+  60 |             }
+  61 |         } catch (err: any) {
+  62 |             setError(err.message || "An error occurred");
+
+Expected '{', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:02:46.265] Browser ERROR   ./src/app/login/page.tsx:65:11
+Parsing ecmascript source code failed
+  63 |         } catch (err: any) {
+  64 |             setError(err.message || "An error occurred");
+> 65 |         } finally {
+     |           ^^^^^^^
+  66 |             setIsLoading(false);
+  67 |         }
+  68 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:02:53.270] Browser ERROR   ./src/app/login/page.tsx:65:11
+Parsing ecmascript source code failed
+  63 |         } catch (err: any) {
+  64 |             setError(err.message || "An error occurred");
+> 65 |         } finally {
+     |           ^^^^^^^
+  66 |             setIsLoading(false);
+  67 |         }
+  68 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:02:58.264] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:02.276] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:07.262] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:10.266] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:27.262] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:29.273] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:32.276] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:48.817] Server  LOG     ✓ Compiled in 66ms
+[01:03:52.276] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:55.268] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:03:57.271] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:04:02.018] Server  LOG     ✓ Compiled in 68ms
+[01:04:05.277] Browser ERROR   ./src/app/login/page.tsx:73:11
+Parsing ecmascript source code failed
+  71 |         } catch (err: any) {
+  72 |             setError(err.message || "An error occurred");
+> 73 |         } finally {
+     |           ^^^^^^^
+  74 |             setIsLoading(false);
+  75 |         }
+  76 |     };
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/app/login/page.tsx [Client Component Browser]
+    ./src/app/login/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/login/page.tsx [Client Component SSR]
+    ./src/app/login/page.tsx [Server Component]
+[01:04:05.794] Server  LOG     ✓ Compiled in 84ms
