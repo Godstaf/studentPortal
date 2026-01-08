@@ -159,6 +159,57 @@ var _s = __turbopack_context__.k.signature();
 function OpportunitiesPage() {
     _s();
     const [selectedId, setSelectedId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [selectedType, setSelectedType] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("All");
+    const [selectedSkills, setSelectedSkills] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    // Extract all unique skills from opportunities
+    const allSkills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "OpportunitiesPage.useMemo[allSkills]": ()=>{
+            const skillsSet = new Set();
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$opportunities$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["opportunities"].forEach({
+                "OpportunitiesPage.useMemo[allSkills]": (opp)=>{
+                    opp.skills.forEach({
+                        "OpportunitiesPage.useMemo[allSkills]": (skill)=>skillsSet.add(skill)
+                    }["OpportunitiesPage.useMemo[allSkills]"]);
+                }
+            }["OpportunitiesPage.useMemo[allSkills]"]);
+            return Array.from(skillsSet).sort();
+        }
+    }["OpportunitiesPage.useMemo[allSkills]"], []);
+    // Filter opportunities based on search and filters
+    const filteredOpportunities = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "OpportunitiesPage.useMemo[filteredOpportunities]": ()=>{
+            return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$opportunities$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["opportunities"].filter({
+                "OpportunitiesPage.useMemo[filteredOpportunities]": (opp)=>{
+                    // Filter by search query
+                    const matchesSearch = searchQuery === "" || opp.title.toLowerCase().includes(searchQuery.toLowerCase()) || opp.organization.toLowerCase().includes(searchQuery.toLowerCase()) || opp.description.toLowerCase().includes(searchQuery.toLowerCase());
+                    // Filter by type
+                    const matchesType = selectedType === "All" || opp.type === selectedType;
+                    // Filter by skills
+                    const matchesSkills = selectedSkills.length === 0 || selectedSkills.some({
+                        "OpportunitiesPage.useMemo[filteredOpportunities]": (skill)=>opp.skills.includes(skill)
+                    }["OpportunitiesPage.useMemo[filteredOpportunities]"]);
+                    return matchesSearch && matchesType && matchesSkills;
+                }
+            }["OpportunitiesPage.useMemo[filteredOpportunities]"]);
+        }
+    }["OpportunitiesPage.useMemo[filteredOpportunities]"], [
+        searchQuery,
+        selectedType,
+        selectedSkills
+    ]);
+    const toggleSkill = (skill)=>{
+        setSelectedSkills((prev)=>prev.includes(skill) ? prev.filter((s)=>s !== skill) : [
+                ...prev,
+                skill
+            ]);
+    };
+    const clearFilters = ()=>{
+        setSearchQuery("");
+        setSelectedType("All");
+        setSelectedSkills([]);
+    };
+    const hasActiveFilters = searchQuery !== "" || selectedType !== "All" || selectedSkills.length > 0;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
         style: {
             padding: "2rem 24px",
@@ -182,8 +233,8 @@ function OpportunitiesPage() {
                         children: "Explore Opportunities"
                     }, void 0, false, {
                         fileName: "[project]/src/app/opportunities/page.tsx",
-                        lineNumber: 23,
-                        columnNumber: 11
+                        lineNumber: 71,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         style: {
@@ -193,22 +244,353 @@ function OpportunitiesPage() {
                         children: "Find the perfect project or internship to kickstart your career."
                     }, void 0, false, {
                         fileName: "[project]/src/app/opportunities/page.tsx",
-                        lineNumber: 32,
+                        lineNumber: 80,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/app/opportunities/page.tsx",
+                lineNumber: 70,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                initial: {
+                    opacity: 0,
+                    y: -20
+                },
+                animate: {
+                    opacity: 1,
+                    y: 0
+                },
+                className: "glass glow-on-hover",
+                style: {
+                    marginBottom: "2rem",
+                    padding: "1.5rem",
+                    borderRadius: "16px"
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            marginBottom: "1.5rem"
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                position: "relative",
+                                display: "flex",
+                                alignItems: "center"
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    style: {
+                                        position: "absolute",
+                                        left: "1rem",
+                                        color: "var(--md-sys-color-on-surface-variant)",
+                                        fontSize: "1.25rem"
+                                    },
+                                    children: "🔍"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/opportunities/page.tsx",
+                                    lineNumber: 110,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    placeholder: "Search opportunities by title, organization, or description...",
+                                    value: searchQuery,
+                                    onChange: (e)=>setSearchQuery(e.target.value),
+                                    style: {
+                                        width: "100%",
+                                        padding: "0.875rem 1rem 0.875rem 3rem",
+                                        fontSize: "1rem",
+                                        borderRadius: "12px",
+                                        border: "1px solid var(--input-border)",
+                                        background: "var(--input-background)",
+                                        color: "var(--input-color)",
+                                        outline: "none",
+                                        transition: "all 0.3s var(--motion-easing-standard)"
+                                    },
+                                    onFocus: (e)=>{
+                                        e.target.style.borderColor = "var(--md-sys-color-primary)";
+                                        e.target.style.boxShadow = "0 0 0 2px var(--liquid-hover-shadow)";
+                                    },
+                                    onBlur: (e)=>{
+                                        e.target.style.borderColor = "var(--input-border)";
+                                        e.target.style.boxShadow = "none";
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/opportunities/page.tsx",
+                                    lineNumber: 120,
+                                    columnNumber: 13
+                                }, this),
+                                searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>setSearchQuery(""),
+                                    style: {
+                                        position: "absolute",
+                                        right: "1rem",
+                                        background: "none",
+                                        border: "none",
+                                        cursor: "pointer",
+                                        fontSize: "1.25rem",
+                                        color: "var(--md-sys-color-on-surface-variant)",
+                                        padding: "0.25rem"
+                                    },
+                                    children: "✕"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/opportunities/page.tsx",
+                                    lineNumber: 146,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/opportunities/page.tsx",
+                            lineNumber: 103,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/opportunities/page.tsx",
+                        lineNumber: 102,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            marginBottom: "1.5rem"
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                style: {
+                                    fontSize: "0.875rem",
+                                    fontWeight: 600,
+                                    marginBottom: "0.75rem",
+                                    color: "var(--md-sys-color-on-surface-variant)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px"
+                                },
+                                children: "Type"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/opportunities/page.tsx",
+                                lineNumber: 167,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: "flex",
+                                    gap: "0.75rem",
+                                    flexWrap: "wrap"
+                                },
+                                children: [
+                                    "All",
+                                    "Project",
+                                    "Internship"
+                                ].map((type)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
+                                        onClick: ()=>setSelectedType(type),
+                                        whileHover: {
+                                            scale: 1.05
+                                        },
+                                        whileTap: {
+                                            scale: 0.95
+                                        },
+                                        style: {
+                                            padding: "0.5rem 1.25rem",
+                                            borderRadius: "20px",
+                                            border: selectedType === type ? "2px solid var(--md-sys-color-primary)" : "1px solid var(--liquid-border)",
+                                            fontSize: "0.875rem",
+                                            fontWeight: 600,
+                                            cursor: "pointer",
+                                            transition: "all 0.3s var(--motion-easing-standard)",
+                                            background: selectedType === type ? "var(--md-sys-color-primary)" : "var(--liquid-bg)",
+                                            color: selectedType === type ? "var(--md-sys-color-on-primary)" : "var(--md-sys-color-on-surface)"
+                                        },
+                                        children: type
+                                    }, type, false, {
+                                        fileName: "[project]/src/app/opportunities/page.tsx",
+                                        lineNumber: 181,
+                                        columnNumber: 15
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/opportunities/page.tsx",
+                                lineNumber: 179,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/app/opportunities/page.tsx",
+                        lineNumber: 166,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            marginBottom: "1rem"
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                style: {
+                                    fontSize: "0.875rem",
+                                    fontWeight: 600,
+                                    marginBottom: "0.75rem",
+                                    color: "var(--md-sys-color-on-surface-variant)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px"
+                                },
+                                children: "Skills"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/opportunities/page.tsx",
+                                lineNumber: 214,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: "flex",
+                                    gap: "0.5rem",
+                                    flexWrap: "wrap"
+                                },
+                                children: allSkills.map((skill)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
+                                        onClick: ()=>toggleSkill(skill),
+                                        whileHover: {
+                                            scale: 1.05
+                                        },
+                                        whileTap: {
+                                            scale: 0.95
+                                        },
+                                        style: {
+                                            padding: "0.375rem 0.875rem",
+                                            borderRadius: "16px",
+                                            fontSize: "0.8rem",
+                                            fontWeight: 500,
+                                            cursor: "pointer",
+                                            transition: "all 0.3s var(--motion-easing-standard)",
+                                            border: selectedSkills.includes(skill) ? "2px solid var(--md-sys-color-primary)" : "1px solid var(--liquid-border)",
+                                            background: selectedSkills.includes(skill) ? "var(--md-sys-color-primary-container)" : "var(--liquid-bg)",
+                                            color: selectedSkills.includes(skill) ? "var(--md-sys-color-on-primary-container)" : "var(--md-sys-color-on-surface)"
+                                        },
+                                        children: [
+                                            selectedSkills.includes(skill) && "✓ ",
+                                            skill
+                                        ]
+                                    }, skill, true, {
+                                        fileName: "[project]/src/app/opportunities/page.tsx",
+                                        lineNumber: 228,
+                                        columnNumber: 15
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/opportunities/page.tsx",
+                                lineNumber: 226,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/app/opportunities/page.tsx",
+                        lineNumber: 213,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            paddingTop: "1rem",
+                            borderTop: "1px solid var(--md-sys-color-outline-variant)"
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    fontSize: "0.875rem",
+                                    color: "var(--md-sys-color-on-surface-variant)",
+                                    fontWeight: 500
+                                },
+                                children: [
+                                    filteredOpportunities.length,
+                                    " ",
+                                    filteredOpportunities.length === 1 ? "opportunity" : "opportunities",
+                                    " found"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/app/opportunities/page.tsx",
+                                lineNumber: 268,
+                                columnNumber: 11
+                            }, this),
+                            hasActiveFilters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                variant: "text",
+                                onClick: clearFilters,
+                                style: {
+                                    fontSize: "0.875rem",
+                                    fontWeight: 600,
+                                    padding: "0.5rem 1rem"
+                                },
+                                children: "Clear Filters"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/opportunities/page.tsx",
+                                lineNumber: 278,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/app/opportunities/page.tsx",
+                        lineNumber: 259,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/app/opportunities/page.tsx",
+                lineNumber: 91,
+                columnNumber: 7
+            }, this),
+            filteredOpportunities.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                initial: {
+                    opacity: 0
+                },
+                animate: {
+                    opacity: 1
+                },
+                style: {
+                    textAlign: "center",
+                    padding: "4rem 2rem",
+                    color: "var(--md-sys-color-on-surface-variant)"
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            fontSize: "3rem",
+                            marginBottom: "1rem"
+                        },
+                        children: "🔍"
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/opportunities/page.tsx",
+                        lineNumber: 304,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        style: {
+                            fontSize: "1.5rem",
+                            marginBottom: "0.5rem"
+                        },
+                        children: "No opportunities found"
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/opportunities/page.tsx",
+                        lineNumber: 305,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: {
+                            fontSize: "1rem"
+                        },
+                        children: "Try adjusting your search or filters to find what you're looking for."
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/opportunities/page.tsx",
+                        lineNumber: 308,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/opportunities/page.tsx",
-                lineNumber: 22,
+                lineNumber: 295,
                 columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
                     display: "grid",
                     gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
                     gap: "2rem"
                 },
-                children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$opportunities$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["opportunities"].map((opp)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                children: filteredOpportunities.map((opp)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                         layoutId: opp.id,
                         onClick: ()=>setSelectedId(opp.id),
                         style: {
@@ -249,7 +631,7 @@ function OpportunitiesPage() {
                                             children: opp.type
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 68,
+                                            lineNumber: 339,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].h2, {
@@ -261,7 +643,7 @@ function OpportunitiesPage() {
                                             children: opp.title
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 88,
+                                            lineNumber: 359,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -273,13 +655,13 @@ function OpportunitiesPage() {
                                             children: opp.organization
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 97,
+                                            lineNumber: 368,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                    lineNumber: 67,
+                                    lineNumber: 338,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -296,7 +678,7 @@ function OpportunitiesPage() {
                                     children: opp.description
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                    lineNumber: 108,
+                                    lineNumber: 379,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -318,7 +700,7 @@ function OpportunitiesPage() {
                                                 children: skill
                                             }, skill, false, {
                                                 fileName: "[project]/src/app/opportunities/page.tsx",
-                                                lineNumber: 132,
+                                                lineNumber: 403,
                                                 columnNumber: 21
                                             }, this)),
                                         opp.skills.length > 3 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -334,13 +716,13 @@ function OpportunitiesPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 147,
+                                            lineNumber: 418,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                    lineNumber: 123,
+                                    lineNumber: 394,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -362,7 +744,7 @@ function OpportunitiesPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 167,
+                                            lineNumber: 438,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -375,29 +757,29 @@ function OpportunitiesPage() {
                                             children: "Read More"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 175,
+                                            lineNumber: 446,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 430,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/opportunities/page.tsx",
-                            lineNumber: 58,
+                            lineNumber: 329,
                             columnNumber: 15
                         }, this)
                     }, opp.id, false, {
                         fileName: "[project]/src/app/opportunities/page.tsx",
-                        lineNumber: 50,
+                        lineNumber: 321,
                         columnNumber: 13
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/opportunities/page.tsx",
-                lineNumber: 42,
+                lineNumber: 313,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -426,8 +808,8 @@ function OpportunitiesPage() {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/opportunities/page.tsx",
-                            lineNumber: 194,
-                            columnNumber: 15
+                            lineNumber: 466,
+                            columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             style: {
@@ -473,8 +855,8 @@ function OpportunitiesPage() {
                                             children: "✕"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 243,
-                                            columnNumber: 23
+                                            lineNumber: 515,
+                                            columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             style: {
@@ -490,8 +872,8 @@ function OpportunitiesPage() {
                                             children: opp.type
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 260,
-                                            columnNumber: 23
+                                            lineNumber: 532,
+                                            columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].h2, {
                                             style: {
@@ -502,8 +884,8 @@ function OpportunitiesPage() {
                                             children: opp.title
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 281,
-                                            columnNumber: 23
+                                            lineNumber: 553,
+                                            columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
                                             style: {
@@ -515,8 +897,8 @@ function OpportunitiesPage() {
                                             children: opp.organization
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 290,
-                                            columnNumber: 23
+                                            lineNumber: 562,
+                                            columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                                             style: {
@@ -532,8 +914,8 @@ function OpportunitiesPage() {
                                                     children: "Description"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                                    lineNumber: 302,
-                                                    columnNumber: 25
+                                                    lineNumber: 574,
+                                                    columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     style: {
@@ -543,14 +925,14 @@ function OpportunitiesPage() {
                                                     children: opp.description
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                                    lineNumber: 311,
-                                                    columnNumber: 25
+                                                    lineNumber: 583,
+                                                    columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 301,
-                                            columnNumber: 23
+                                            lineNumber: 573,
+                                            columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             style: {
@@ -566,8 +948,8 @@ function OpportunitiesPage() {
                                                     children: "Required Skills"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                                    lineNumber: 322,
-                                                    columnNumber: 25
+                                                    lineNumber: 594,
+                                                    columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     style: {
@@ -586,19 +968,19 @@ function OpportunitiesPage() {
                                                             children: skill
                                                         }, skill, false, {
                                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                                            lineNumber: 339,
-                                                            columnNumber: 29
+                                                            lineNumber: 611,
+                                                            columnNumber: 27
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                                    lineNumber: 331,
-                                                    columnNumber: 25
+                                                    lineNumber: 603,
+                                                    columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 321,
-                                            columnNumber: 23
+                                            lineNumber: 593,
+                                            columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             style: {
@@ -619,14 +1001,14 @@ function OpportunitiesPage() {
                                                             children: opp.deadline
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                                            lineNumber: 369,
-                                                            columnNumber: 37
+                                                            lineNumber: 641,
+                                                            columnNumber: 35
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                                    lineNumber: 366,
-                                                    columnNumber: 25
+                                                    lineNumber: 638,
+                                                    columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                     href: `/opportunities/${opp.id}`,
@@ -639,46 +1021,46 @@ function OpportunitiesPage() {
                                                         children: "Apply Now"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/opportunities/page.tsx",
-                                                        lineNumber: 372,
-                                                        columnNumber: 27
+                                                        lineNumber: 644,
+                                                        columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                                    lineNumber: 371,
-                                                    columnNumber: 25
+                                                    lineNumber: 643,
+                                                    columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/opportunities/page.tsx",
-                                            lineNumber: 356,
-                                            columnNumber: 23
+                                            lineNumber: 628,
+                                            columnNumber: 21
                                         }, this)
                                     ]
                                 }, opp.id, true, {
                                     fileName: "[project]/src/app/opportunities/page.tsx",
-                                    lineNumber: 227,
-                                    columnNumber: 21
+                                    lineNumber: 499,
+                                    columnNumber: 19
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/app/opportunities/page.tsx",
-                            lineNumber: 210,
-                            columnNumber: 15
+                            lineNumber: 482,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/src/app/opportunities/page.tsx",
-                lineNumber: 191,
-                columnNumber: 9
+                lineNumber: 463,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/opportunities/page.tsx",
-        lineNumber: 14,
-        columnNumber: 7
+        lineNumber: 62,
+        columnNumber: 5
     }, this);
 }
-_s(OpportunitiesPage, "6tRyBKpA6Tf8zEXxvntvrffDmeA=");
+_s(OpportunitiesPage, "xmjQvaEyWF8OG2FX9tBCAptSa2w=");
 _c = OpportunitiesPage;
 var _c;
 __turbopack_context__.k.register(_c, "OpportunitiesPage");

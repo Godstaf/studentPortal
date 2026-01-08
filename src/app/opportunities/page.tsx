@@ -4,41 +4,312 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { opportunities } from "@/data/opportunities";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 
 export default function OpportunitiesPage() {
-    const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedType, setSelectedType] = useState<"All" | "Project" | "Internship">("All");
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
 
-    return (
-      <main
+  // Extract all unique skills from opportunities
+  const allSkills = useMemo(() => {
+    const skillsSet = new Set<string>();
+    opportunities.forEach(opp => {
+      opp.skills.forEach(skill => skillsSet.add(skill));
+    });
+    return Array.from(skillsSet).sort();
+  }, []);
+
+  // Filter opportunities based on search and filters
+  const filteredOpportunities = useMemo(() => {
+    return opportunities.filter(opp => {
+      // Filter by search query
+      const matchesSearch = searchQuery === "" ||
+        opp.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        opp.organization.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        opp.description.toLowerCase().includes(searchQuery.toLowerCase());
+
+      // Filter by type
+      const matchesType = selectedType === "All" || opp.type === selectedType;
+
+      // Filter by skills
+      const matchesSkills = selectedSkills.length === 0 ||
+        selectedSkills.some(skill => opp.skills.includes(skill));
+
+      return matchesSearch && matchesType && matchesSkills;
+    });
+  }, [searchQuery, selectedType, selectedSkills]);
+
+  const toggleSkill = (skill: string) => {
+    setSelectedSkills(prev =>
+      prev.includes(skill)
+        ? prev.filter(s => s !== skill)
+        : [...prev, skill]
+    );
+  };
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedType("All");
+    setSelectedSkills([]);
+  };
+
+  const hasActiveFilters = searchQuery !== "" || selectedType !== "All" || selectedSkills.length > 0;
+
+  return (
+    <main
+      style={{
+        padding: "2rem 24px",
+        maxWidth: "1200px",
+        margin: "0 auto",
+        minHeight: "100vh",
+      }}
+    >
+      <header style={{ marginBottom: "3rem", textAlign: "center" }}>
+        <h1
+          style={{
+            fontSize: "2.5rem",
+            marginBottom: "1rem",
+            color: "var(--md-sys-color-primary)",
+          }}
+        >
+          Explore Opportunities
+        </h1>
+        <p
+          style={{
+            color: "var(--md-sys-color-on-surface-variant)",
+            fontSize: "1.1rem",
+          }}
+        >
+          Find the perfect project or internship to kickstart your career.
+        </p>
+      </header>
+
+      {/* Search and Filter Section */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="glass glow-on-hover"
         style={{
-          padding: "2rem 24px",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          minHeight: "100vh",
+          marginBottom: "2rem",
+          padding: "1.5rem",
+          borderRadius: "16px",
         }}
       >
-        <header style={{ marginBottom: "3rem", textAlign: "center" }}>
-          <h1
+        {/* Search Input */}
+        <div style={{ marginBottom: "1.5rem" }}>
+          <div
             style={{
-              fontSize: "2.5rem",
-              marginBottom: "1rem",
-              color: "var(--md-sys-color-primary)",
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            Explore Opportunities
-          </h1>
-          <p
-            style={{
-              color: "var(--md-sys-color-on-surface-variant)",
-              fontSize: "1.1rem",
-            }}
-          >
-            Find the perfect project or internship to kickstart your career.
-          </p>
-        </header>
+            <span
+              style={{
+                position: "absolute",
+                left: "1rem",
+                color: "var(--md-sys-color-on-surface-variant)",
+                fontSize: "1.25rem",
+              }}
+            >
+              🔍
+            </span>
+            <input
+              type="text"
+              placeholder="Search opportunities by title, organization, or description..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "0.875rem 1rem 0.875rem 3rem",
+                fontSize: "1rem",
+                borderRadius: "12px",
+                border: "1px solid var(--input-border)",
+                background: "var(--input-background)",
+                color: "var(--input-color)",
+                outline: "none",
+                transition: "all 0.3s var(--motion-easing-standard)",
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = "var(--md-sys-color-primary)";
+                e.target.style.boxShadow = "0 0 0 2px var(--liquid-hover-shadow)";
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = "var(--input-border)";
+                e.target.style.boxShadow = "none";
+              }}
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                style={{
+                  position: "absolute",
+                  right: "1rem",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "1.25rem",
+                  color: "var(--md-sys-color-on-surface-variant)",
+                  padding: "0.25rem",
+                }}
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
 
+        {/* Type Filters */}
+        <div style={{ marginBottom: "1.5rem" }}>
+          <h3
+            style={{
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              marginBottom: "0.75rem",
+              color: "var(--md-sys-color-on-surface-variant)",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Type
+          </h3>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            {(["All", "Project", "Internship"] as const).map((type) => (
+              <motion.button
+                key={type}
+                onClick={() => setSelectedType(type)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  padding: "0.5rem 1.25rem",
+                  borderRadius: "20px",
+                  border: selectedType === type
+                    ? "2px solid var(--md-sys-color-primary)"
+                    : "1px solid var(--liquid-border)",
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  transition: "all 0.3s var(--motion-easing-standard)",
+                  background:
+                    selectedType === type
+                      ? "var(--md-sys-color-primary)"
+                      : "var(--liquid-bg)",
+                  color:
+                    selectedType === type
+                      ? "var(--md-sys-color-on-primary)"
+                      : "var(--md-sys-color-on-surface)",
+                }}
+              >
+                {type}
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
+        {/* Skill Filters */}
+        <div style={{ marginBottom: "1rem" }}>
+          <h3
+            style={{
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              marginBottom: "0.75rem",
+              color: "var(--md-sys-color-on-surface-variant)",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Skills
+          </h3>
+          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+            {allSkills.map((skill) => (
+              <motion.button
+                key={skill}
+                onClick={() => toggleSkill(skill)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  padding: "0.375rem 0.875rem",
+                  borderRadius: "16px",
+                  fontSize: "0.8rem",
+                  fontWeight: 500,
+                  cursor: "pointer",
+                  transition: "all 0.3s var(--motion-easing-standard)",
+                  border: selectedSkills.includes(skill)
+                    ? "2px solid var(--md-sys-color-primary)"
+                    : "1px solid var(--liquid-border)",
+                  background: selectedSkills.includes(skill)
+                    ? "var(--md-sys-color-primary-container)"
+                    : "var(--liquid-bg)",
+                  color: selectedSkills.includes(skill)
+                    ? "var(--md-sys-color-on-primary-container)"
+                    : "var(--md-sys-color-on-surface)",
+                }}
+              >
+                {selectedSkills.includes(skill) && "✓ "}
+                {skill}
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
+        {/* Clear Filters & Results Count */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingTop: "1rem",
+            borderTop: "1px solid var(--md-sys-color-outline-variant)",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "0.875rem",
+              color: "var(--md-sys-color-on-surface-variant)",
+              fontWeight: 500,
+            }}
+          >
+            {filteredOpportunities.length} {filteredOpportunities.length === 1 ? "opportunity" : "opportunities"} found
+          </span>
+          {hasActiveFilters && (
+            <Button
+              variant="text"
+              onClick={clearFilters}
+              style={{
+                fontSize: "0.875rem",
+                fontWeight: 600,
+                padding: "0.5rem 1rem",
+              }}
+            >
+              Clear Filters
+            </Button>
+          )}
+        </div>
+      </motion.div>
+
+      {/* Opportunities Grid */}
+      {filteredOpportunities.length === 0 ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          style={{
+            textAlign: "center",
+            padding: "4rem 2rem",
+            color: "var(--md-sys-color-on-surface-variant)",
+          }}
+        >
+          <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🔍</div>
+          <h2 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>
+            No opportunities found
+          </h2>
+          <p style={{ fontSize: "1rem" }}>
+            Try adjusting your search or filters to find what you're looking for.
+          </p>
+        </motion.div>
+      ) : (
         <div
           style={{
             display: "grid",
@@ -46,7 +317,7 @@ export default function OpportunitiesPage() {
             gap: "2rem",
           }}
         >
-          {opportunities.map((opp) => (
+          {filteredOpportunities.map((opp) => (
             <motion.div
               layoutId={opp.id}
               key={opp.id}
@@ -187,202 +458,203 @@ export default function OpportunitiesPage() {
             </motion.div>
           ))}
         </div>
+      )}
 
-        <AnimatePresence>
-          {selectedId && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setSelectedId(null)}
-                style={{
-                  position: "fixed",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: "rgba(0,0,0,0.6)",
-                  backdropFilter: "blur(4px)",
-                  zIndex: 40,
-                }}
-              />
-              <div
-                style={{
-                  position: "fixed",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  zIndex: 50,
-                  pointerEvents: "none",
-                }}
-              >
-                {opportunities
-                  .filter((item) => item.id === selectedId)
-                  .map((opp) => (
-                    <motion.div
-                      layoutId={selectedId}
-                      key={opp.id}
+      <AnimatePresence>
+        {selectedId && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedId(null)}
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: "rgba(0,0,0,0.6)",
+                backdropFilter: "blur(4px)",
+                zIndex: 40,
+              }}
+            />
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 50,
+                pointerEvents: "none",
+              }}
+            >
+              {opportunities
+                .filter((item) => item.id === selectedId)
+                .map((opp) => (
+                  <motion.div
+                    layoutId={selectedId}
+                    key={opp.id}
+                    style={{
+                      width: "90%",
+                      maxWidth: "700px",
+                      maxHeight: "85vh",
+                      overflowY: "auto",
+                      background: "var(--md-sys-color-surface)",
+                      borderRadius: "24px",
+                      padding: "2rem",
+                      pointerEvents: "auto",
+                      position: "relative",
+                      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                    }}
+                  >
+                    <Button
+                      variant="glass"
+                      onClick={() => setSelectedId(null)}
                       style={{
-                        width: "90%",
-                        maxWidth: "700px",
-                        maxHeight: "85vh",
-                        overflowY: "auto",
-                        background: "var(--md-sys-color-surface)",
-                        borderRadius: "24px",
-                        padding: "2rem",
-                        pointerEvents: "auto",
-                        position: "relative",
-                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                        position: "absolute",
+                        top: "1rem",
+                        right: "1rem",
+                        minWidth: "auto",
+                        padding: "8px",
+                        borderRadius: "50%",
+                        width: "36px",
+                        height: "36px",
                       }}
                     >
-                      <Button
-                        variant="glass"
-                        onClick={() => setSelectedId(null)}
-                        style={{
-                          position: "absolute",
-                          top: "1rem",
-                          right: "1rem",
-                          minWidth: "auto",
-                          padding: "8px",
-                          borderRadius: "50%",
-                          width: "36px",
-                          height: "36px",
-                        }}
-                      >
-                        ✕
-                      </Button>
+                      ✕
+                    </Button>
 
-                      <span
-                        style={{
-                          display: "inline-block",
-                          padding: "4px 12px",
-                          borderRadius: "16px",
-                          fontSize: "0.85rem",
-                          fontWeight: 600,
-                          backgroundColor:
-                            opp.type === "Internship"
-                              ? "var(--md-sys-color-tertiary-container)"
-                              : "var(--md-sys-color-primary-container)",
-                          color:
-                            opp.type === "Internship"
-                              ? "var(--md-sys-color-on-tertiary-container)"
-                              : "var(--md-sys-color-on-primary-container)",
-                          marginBottom: "1rem",
-                        }}
-                      >
-                        {opp.type}
-                      </span>
+                    <span
+                      style={{
+                        display: "inline-block",
+                        padding: "4px 12px",
+                        borderRadius: "16px",
+                        fontSize: "0.85rem",
+                        fontWeight: 600,
+                        backgroundColor:
+                          opp.type === "Internship"
+                            ? "var(--md-sys-color-tertiary-container)"
+                            : "var(--md-sys-color-primary-container)",
+                        color:
+                          opp.type === "Internship"
+                            ? "var(--md-sys-color-on-tertiary-container)"
+                            : "var(--md-sys-color-on-primary-container)",
+                        marginBottom: "1rem",
+                      }}
+                    >
+                      {opp.type}
+                    </span>
 
-                      <motion.h2
+                    <motion.h2
+                      style={{
+                        fontSize: "2rem",
+                        marginBottom: "0.5rem",
+                        color: "var(--md-sys-color-on-surface)",
+                      }}
+                    >
+                      {opp.title}
+                    </motion.h2>
+                    <motion.p
+                      style={{
+                        fontSize: "1.1rem",
+                        color: "var(--md-sys-color-secondary)",
+                        marginBottom: "2rem",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {opp.organization}
+                    </motion.p>
+
+                    <motion.div style={{ marginBottom: "2rem" }}>
+                      <h3
                         style={{
-                          fontSize: "2rem",
+                          fontSize: "1.2rem",
                           marginBottom: "0.5rem",
-                          color: "var(--md-sys-color-on-surface)",
+                          fontWeight: 600,
                         }}
                       >
-                        {opp.title}
-                      </motion.h2>
-                      <motion.p
+                        Description
+                      </h3>
+                      <p
                         style={{
-                          fontSize: "1.1rem",
-                          color: "var(--md-sys-color-secondary)",
-                          marginBottom: "2rem",
-                          fontWeight: 500,
+                          lineHeight: 1.7,
+                          color: "var(--md-sys-color-on-surface-variant)",
                         }}
                       >
-                        {opp.organization}
-                      </motion.p>
+                        {opp.description}
+                      </p>
+                    </motion.div>
 
-                      <motion.div style={{ marginBottom: "2rem" }}>
-                        <h3
-                          style={{
-                            fontSize: "1.2rem",
-                            marginBottom: "0.5rem",
-                            fontWeight: 600,
-                          }}
-                        >
-                          Description
-                        </h3>
-                        <p
-                          style={{
-                            lineHeight: 1.7,
-                            color: "var(--md-sys-color-on-surface-variant)",
-                          }}
-                        >
-                          {opp.description}
-                        </p>
-                      </motion.div>
-
-                      <div style={{ marginBottom: "2rem" }}>
-                        <h3
-                          style={{
-                            fontSize: "1.2rem",
-                            marginBottom: "0.5rem",
-                            fontWeight: 600,
-                          }}
-                        >
-                          Required Skills
-                        </h3>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            gap: "0.5rem",
-                          }}
-                        >
-                          {opp.skills.map((skill) => (
-                            <span
-                              key={skill}
-                              style={{
-                                fontSize: "0.9rem",
-                                padding: "4px 12px",
-                                borderRadius: "6px",
-                                border:
-                                  "1px solid var(--md-sys-color-outline, #79747E)",
-                                color: "var(--md-sys-color-on-surface-variant)",
-                              }}
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
+                    <div style={{ marginBottom: "2rem" }}>
+                      <h3
+                        style={{
+                          fontSize: "1.2rem",
+                          marginBottom: "0.5rem",
+                          fontWeight: 600,
+                        }}
+                      >
+                        Required Skills
+                      </h3>
                       <div
                         style={{
                           display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          paddingTop: "1rem",
-                          borderTop:
-                            "1px solid var(--md-sys-color-outline-variant)",
+                          flexWrap: "wrap",
+                          gap: "0.5rem",
                         }}
                       >
-                        <span
-                          style={{ color: "var(--md-sys-color-secondary)" }}
-                        >
-                          Deadline: <strong>{opp.deadline}</strong>
-                        </span>
-                        <Link href={`/opportunities/${opp.id}`}>
-                          <Button
-                            variant="filled"
-                            style={{ padding: "12px 24px", fontSize: "1rem" }}
+                        {opp.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            style={{
+                              fontSize: "0.9rem",
+                              padding: "4px 12px",
+                              borderRadius: "6px",
+                              border:
+                                "1px solid var(--md-sys-color-outline, #79747E)",
+                              color: "var(--md-sys-color-on-surface-variant)",
+                            }}
                           >
-                            Apply Now
-                          </Button>
-                        </Link>
+                            {skill}
+                          </span>
+                        ))}
                       </div>
-                    </motion.div>
-                  ))}
-              </div>
-            </>
-          )}
-        </AnimatePresence>
-      </main>
-    );
+                    </div>
+
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        paddingTop: "1rem",
+                        borderTop:
+                          "1px solid var(--md-sys-color-outline-variant)",
+                      }}
+                    >
+                      <span
+                        style={{ color: "var(--md-sys-color-secondary)" }}
+                      >
+                        Deadline: <strong>{opp.deadline}</strong>
+                      </span>
+                      <Link href={`/opportunities/${opp.id}`}>
+                        <Button
+                          variant="filled"
+                          style={{ padding: "12px 24px", fontSize: "1rem" }}
+                        >
+                          Apply Now
+                        </Button>
+                      </Link>
+                    </div>
+                  </motion.div>
+                ))}
+            </div>
+          </>
+        )}
+      </AnimatePresence>
+    </main>
+  );
 }
