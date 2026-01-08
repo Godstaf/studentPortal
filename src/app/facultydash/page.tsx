@@ -18,7 +18,7 @@ interface StudentApplication extends Student {
   detailedDescription: string;
   documents: string[];
   approvalStatus: 'Pending' | 'Approved' | 'Rejected';
-  
+
   // Specific to Internship category
   internshipDomain?: string;
   companyName?: string;
@@ -27,9 +27,9 @@ interface StudentApplication extends Student {
 
 const INITIAL_APPLICATIONS: StudentApplication[] = [
   {
-    id: '1', username: 'aaravp', email: 'aarav@example.com', full_name: 'Aarav Patel', role: 'student', is_active: true, created_at: '2023-01-01',
+    id: '1', username: 'aaravp', email: 'aarav@example.com', full_name: 'Aarav Patel', role: 'student', is_active: true, is_verified: true, created_at: '2023-01-01',
     collegeName: 'PICT', degree: 'B.E.', branch: 'Computer Engineering', yearsOfStudy: 3, expectedGraduationYear: 2026, rollNumber: '31101', collegeEmail: 'aarav.p@pict.edu',
-    
+
     requestId: 'req1',
     category: 'Internship',
     shortDescription: 'Internship verification',
@@ -39,9 +39,9 @@ const INITIAL_APPLICATIONS: StudentApplication[] = [
     approvalStatus: 'Pending'
   },
   {
-    id: '2', username: 'ishitas', email: 'ishita@example.com', full_name: 'Ishita Sharma', role: 'student', is_active: true, created_at: '2023-01-01',
+    id: '2', username: 'ishitas', email: 'ishita@example.com', full_name: 'Ishita Sharma', role: 'student', is_active: true, is_verified: true, created_at: '2023-01-01',
     collegeName: 'PICT', degree: 'B.E.', branch: 'Information Technology', yearsOfStudy: 4, expectedGraduationYear: 2025, rollNumber: '31102', collegeEmail: 'ishita.s@pict.edu',
-    
+
     requestId: 'req2',
     category: 'Fees',
     shortDescription: 'Fee installment request',
@@ -50,9 +50,9 @@ const INITIAL_APPLICATIONS: StudentApplication[] = [
     approvalStatus: 'Approved'
   },
   {
-    id: '3', username: 'rohang', email: 'rohan@example.com', full_name: 'Rohan Gupta', role: 'student', is_active: true, created_at: '2023-01-01',
+    id: '3', username: 'rohang', email: 'rohan@example.com', full_name: 'Rohan Gupta', role: 'student', is_active: true, is_verified: true, created_at: '2023-01-01',
     collegeName: 'PICT', degree: 'B.E.', branch: 'EnTC', yearsOfStudy: 3, expectedGraduationYear: 2026, rollNumber: '31103', collegeEmail: 'rohan.g@pict.edu',
-    
+
     requestId: 'req3',
     category: 'Assignment',
     shortDescription: 'Late submission for CNS',
@@ -208,20 +208,20 @@ export default function FacultyDashboardPage() {
                 </div>
 
                 <div style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Contact</h3>
-                    <p>Email: {selectedApp.collegeEmail}</p>
-                    <p>Personal Email: {selectedApp.email}</p>
+                  <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Contact</h3>
+                  <p>Email: {selectedApp.collegeEmail}</p>
+                  <p>Personal Email: {selectedApp.email}</p>
                 </div>
 
                 <div style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Documents</h3>
-                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                        {selectedApp.documents.map((doc, i) => (
-                            <span key={i} style={{ padding: '4px 8px', background: 'var(--md-sys-color-secondary-container)', borderRadius: '4px', fontSize: '0.9rem' }}>
-                                📄 {doc}
-                            </span>
-                        ))}
-                    </div>
+                  <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Documents</h3>
+                  <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    {selectedApp.documents.map((doc, i) => (
+                      <span key={i} style={{ padding: '4px 8px', background: 'var(--md-sys-color-secondary-container)', borderRadius: '4px', fontSize: '0.9rem' }}>
+                        📄 {doc}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
               </motion.div>
