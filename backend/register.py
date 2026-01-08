@@ -35,6 +35,7 @@ async def register(user_in: UserCreate):
         hashed_password=hashed_password,
         role=user_in.role,
         is_active=True,
+        is_verified=False,
         created_at=datetime.utcnow()
     )
     

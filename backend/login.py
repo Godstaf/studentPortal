@@ -27,6 +27,7 @@ class UserPublic(BaseModel):
     full_name: str
     role: Literal["student", "faculty", "admin", "recruiter"]
     is_active: bool = True
+    is_verified: bool
     created_at: datetime
 
     class Config:
