@@ -138,6 +138,12 @@ def retrieve_user(username: str):
         return User(**fix_mongo_id(user))
     return None
 
+def update_user_verification(username: str, status: bool):
+    users_collection.update_one(
+        {"username": username},
+        {"$set": {"is_verified": status}}
+    )
+
 # 2. Student Panel
 def create_student_profile(profile: StudentProfile):
     return create_item(student_profiles_collection, profile)

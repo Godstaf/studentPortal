@@ -66,7 +66,7 @@ export default function DashboardPage() {
             setLoading(true);
             // Simulate network delay
             await new Promise(resolve => setTimeout(resolve, 1500));
-            
+
             // Set data from mock response
             setAppliedOpportunities(mockApiResponse.applied);
             setSavedOpportunities(mockApiResponse.saved);
@@ -80,16 +80,17 @@ export default function DashboardPage() {
         return (
             <main style={{ padding: '2rem 24px', maxWidth: '1200px', margin: '0 auto', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div style={{ textAlign: 'center' }}>
-                    <div style={{ 
-                        width: '48px', 
-                        height: '48px', 
-                        border: '4px solid var(--md-sys-color-surface-variant)', 
-                        borderTop: '4px solid var(--md-sys-color-primary)', 
-                        borderRadius: '50%', 
+                    <div style={{
+                        width: '48px',
+                        height: '48px',
+                        border: '4px solid var(--md-sys-color-surface-variant)',
+                        borderTop: '4px solid var(--md-sys-color-primary)',
+                        borderRadius: '50%',
                         animation: 'spin 1s linear infinite',
-                        margin: '0 auto 1rem' 
+                        margin: '0 auto 1rem'
                     }}>
-                        <style dangerouslySetInnerHTML={{__html: `
+                        <style dangerouslySetInnerHTML={{
+                            __html: `
                             @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
                         `}} />
                     </div>
@@ -119,7 +120,7 @@ export default function DashboardPage() {
                     }}>
                         {user?.full_name ? user.full_name.charAt(0).toUpperCase() : 'S'}
                     </div>
-                    
+
                     <div>
                         <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>
                             Welcome, {user?.full_name?.split(' ')[0] || 'Student'}!
@@ -289,9 +290,9 @@ export default function DashboardPage() {
                                         <div style={{ marginBottom: '2rem', padding: '1rem', background: 'var(--md-sys-color-surface-variant)', borderRadius: '12px' }}>
                                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 600 }}>Application Status</h3>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--md-sys-color-primary)' }}></div>
-                                                <span style={{ fontWeight: 600 }}>Under Review</span>
-                                                <span style={{ color: 'var(--md-sys-color-secondary)', fontSize: '0.9rem' }}>- Submitted on Nov 25, 2025</span>
+                                                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: opp.status === 'Shortlisted' ? '#4CAF50' : 'var(--md-sys-color-primary)' }}></div>
+                                                <span style={{ fontWeight: 600, color: opp.status === 'Shortlisted' ? '#4CAF50' : 'inherit' }}>{opp.status}</span>
+                                                <span style={{ color: 'var(--md-sys-color-secondary)', fontSize: '0.9rem' }}>- Submitted on {new Date(opp.submittedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                             </div>
                                         </div>
                                     )}
