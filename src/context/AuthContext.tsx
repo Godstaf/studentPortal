@@ -10,6 +10,7 @@ export interface User {
     full_name: string;
     role: "student" | "faculty" | "admin" | "recruiter";
     is_active: boolean;
+    is_verified: boolean;
     created_at: string;
 }
 
@@ -42,8 +43,8 @@ interface RegisterData {
 interface AuthContextType {
     user: User | null;
     loading: boolean;
-    login: (username: string, password: string) => Promise<void>;
-    register: (data: RegisterData) => Promise<void>;
+    login: (username: string, password: string) => Promise<User>;
+    register: (data: RegisterData) => Promise<User>;
     logout: () => void;
     isAuthenticated: boolean;
 }
@@ -56,7 +57,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const router = useRouter();
     const API_URL = 'http://127.0.0.1:8000';
 
-    const fetchUser = async (token: string) => {
+    const fetchUser = async (token: string): Promise<User | null> => {
         try {
             const response = await fetch(`${API_URL}/users/me/`, {
                 headers: {
@@ -67,12 +68,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             if (response.ok) {
                 const userData = await response.json();
                 setUser(userData);
+                return userData;
             } else {
                 logout();
+                return null;
             }
         } catch (error) {
             console.error('Failed to fetch user:', error);
             logout();
+            return null;
         } finally {
             setLoading(false);
         }
@@ -87,7 +91,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     }, []);
 
-    const login = async (username: string, password: string) => {
+    const login = async (username: string, password: string): Promise<User> => {
         // OAuth2PasswordRequestForm expects x-www-form-urlencoded data
         const formData = new URLSearchParams();
         formData.append('grant_type', 'password');
@@ -109,10 +113,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         const data = await response.json();
         localStorage.setItem('token', data.access_token);
-        await fetchUser(data.access_token);
+        const userData = await fetchUser(data.access_token);
+        if (!userData) throw new Error('Failed to fetch user data');
+        return userData;
     };
 
-    const register = async (data: RegisterData) => {
+    const register = async (data: RegisterData): Promise<User> => {
         const response = await fetch(`${API_URL}/register`, {
             method: 'POST',
             headers: {
@@ -127,7 +133,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
         
         // After successful registration, log the user in automatically
-        await login(data.username, data.password);
+        return await login(data.username, data.password);
     };
 
     const logout = () => {

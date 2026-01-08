@@ -35,37 +35,67 @@ export default function LoginPage() {
 
         try {
             if (state === "login") {
-                await login(formData.username, formData.password);
-                router.push("/dashboard");
+                const user = await login(formData.username, formData.password);
+                
+                if (!user.is_verified) {
+                    switch(user.role) {
+                        case "student":
+                            router.push("/studentForm");
+                            break;
+                        case "faculty":
+                            router.push("/forms/faculty");
+                            break;
+                        case "recruiter":
+                            router.push("/forms/recruiter");
+                            break;
+                    } 
+                } else {
+                    switch(user.role){
+                        case "student":
+                            router.push("/dashboard");
+                            break;
+                        case "faculty":
+                            router.push("/facultydash");
+                            break;
+                        case "recruiter":
+                            router.push("/recruiter_dashboard");
+                            break;
+                    }
+                }
             } else {
-                await register({
+                const user = await register({
                     username: formData.username,
                     email: formData.email,
                     full_name: formData.full_name,
                     password: formData.password,
                     role: formData.role,
                 });
-                // switch(formData.role) {
-                //     case "student":
-                //         router.push("/studentForm");
-                //         break;
-                //     case "faculty":
-                //         router.push("/forms/faculty");
-                //         break;
-                //     case "recruiter":
-                //         router.push("/forms/recruiter");
-                //         break;
-                // } // Register logs in automatically
-                switch(formData.role){
-                    case "student":
-                        router.push("/dashboard");
-                        break;
-                    case "faculty":
-                        router.push("/facultydash");
-                        break;
-                    case "recruiter":
-                        router.push("/recruiter_dashboard");
-                        break;
+                
+                // Assuming new registration always starts as unverified
+                if (!user.is_verified) {
+                    switch(user.role) {
+                        case "student":
+                            router.push("/studentForm");
+                            break;
+                        case "faculty":
+                            router.push("/forms/faculty");
+                            break;
+                        case "recruiter":
+                            router.push("/forms/recruiter");
+                            break;
+                    } 
+                } else {
+                     switch(user.role){
+                        case "student":
+                            router.push("/dashboard");
+                            break;
+                        case "faculty":
+                            router.push("/facultydash");
+                            break;
+                        case "recruiter":
+                            router.push("/recruiter_dashboard");
+                            break;
+                    }
                 }
             }
         } catch (err: any) {
