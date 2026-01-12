@@ -7,10 +7,12 @@ import { Button } from "../ui/Button";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, logout } = useAuth();
+  const router = useRouter();
   // user?.role = "student"
 
   const toggleMenu = () => {
@@ -119,33 +121,54 @@ export const Navbar = () => {
           )}
           <ThemeToggle />
           {user ? (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                cursor: "pointer",
-              }}
-              onClick={logout}
-              title="Click to logout"
-            >
+            <>
               <div
                 style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  backgroundColor: "var(--md-sys-color-primary)",
-                  color: "var(--md-sys-color-on-primary)",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: "bold",
-                  fontSize: "1.2rem",
+                  gap: "10px",
+                  cursor: "pointer",
                 }}
+                onClick={() => {
+                  switch (user.role) {
+                    case "student":
+                      router.push("/dashboard");
+                      break;
+                    case "faculty":
+                      router.push("/facultyprofile");
+                      break;
+                    case "recruiter":
+                      router.push("/recruiter_dashboard");
+                      break;
+                  }
+                }}
+                title="visit profile"
               >
-                {getInitials(user.full_name)}
+                <div
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--md-sys-color-primary)",
+                    color: "var(--md-sys-color-on-primary)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                  }}
+                >
+                  {getInitials(user.full_name)}
+                </div>
               </div>
-            </div>
+              <Button
+                variant="outlined"
+                onClick={logout}
+                style={{ marginLeft: "10px" }}
+              >
+                Logout
+              </Button>
+            </>
           ) : (
             <Link href="/login">
               <Button variant="filled">Login</Button>
@@ -275,19 +298,45 @@ export const Navbar = () => {
         )}
         <ThemeToggle />
         {user ? (
-          <div
-            onClick={() => {
-              logout();
-              toggleMenu();
-            }}
-            style={{
-              cursor: "pointer",
-              textAlign: "center",
-              padding: "10px",
-            }}
-          >
-            Log out ({user.username})
-          </div>
+          <>
+            <div
+              onClick={() => {
+                logout();
+                toggleMenu();
+              }}
+              style={{
+                cursor: "pointer",
+                textAlign: "center",
+                padding: "10px",
+                color: "var(--md-sys-color-error)",
+              }}
+            >
+              Logout
+            </div>
+            <div
+              onClick={() => {
+                switch (user.role) {
+                  case "student":
+                    router.push("/dashboard");
+                    break;
+                  case "faculty":
+                    router.push("/facultyprofile");
+                    break;
+                  case "recruiter":
+                    router.push("/recruiter_dashboard");
+                    break;
+                }
+                toggleMenu();
+              }}
+              style={{
+                cursor: "pointer",
+                textAlign: "center",
+                padding: "10px",
+              }}
+            >
+              ({user.username})
+            </div>
+          </>
         ) : (
           <Link href="/login" onClick={toggleMenu}>
             <Button variant="filled" style={{ width: "100%" }}>

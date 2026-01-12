@@ -15,6 +15,7 @@ export default function FacultyProfilePage() {
         email: "aditi.verma@pict.edu",
         full_name: "Dr. Aditi Verma",
         role: "faculty",
+        is_verified: true,
         is_active: true,
         created_at: "2023-01-01",
         institution: "Pune Institute of Computer Technology",
