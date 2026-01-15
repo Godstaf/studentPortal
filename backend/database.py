@@ -17,6 +17,8 @@ logs_collection = admin_db.get_collection("logs")
 student_db = client.student_panel_db
 student_profiles_collection = student_db.get_collection("profiles")
 student_skills_collection = student_db.get_collection("skills")
+student_projects_collection = student_db.get_collection("projects")
+saved_jobs_collection = student_db.get_collection("saved_jobs")
 
 # 3. Faculty DB: Faculty Profiles, Courses, Research
 faculty_db = client.faculty_panel_db

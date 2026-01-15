@@ -20,8 +20,8 @@ async def create_profile(profile: StudentProfile, current_user: User = Depends(g
             detail="Only students can create a student profile"
         )
 
-    # Overwrite student_id with current user's ID to ensure security
-    profile.student_id = str(current_user.id)
+    # Overwrite user_id with current user's ID to ensure security
+    profile.user_id = str(current_user.id)
     
     # Create the profile
     new_profile = create_student_profile(profile)

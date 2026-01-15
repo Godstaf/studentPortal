@@ -29,6 +29,7 @@ class UserPublic(BaseModel):
     is_active: bool = True
     is_verified: bool
     created_at: datetime
+    updated_at: datetime
 
     class Config:
         from_attributes = True # updated from orm_mode for Pydantic v2 if needed, but keeping simple
