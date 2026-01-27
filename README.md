@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Student Portal
 
-## Getting Started
+This is a full-stack application with a **Next.js** frontend and a **FastAPI** backend.
 
-First, run the development server:
+## Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Node.js** (v18 or higher)
+- **Python** (v3.9 or higher)
+- **Git**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Godstaf/studentPortal.git
+    cd studentPortal
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Backend Setup (FastAPI)
 
-To learn more about Next.js, take a look at the following resources:
+The backend handles authentication and database interactions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Navigate to the backend directory:**
+    ```bash
+    cd backend
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  **Create and activate a virtual environment (Optional but Recommended):**
+    ```bash
+    python -m venv venv
+    
+    # On macOS/Linux:
+    source venv/bin/activate
+    
+    # On Windows:
+    venv\Scripts\activate
+    ```
 
-## Deploy on Vercel
+3.  **Install Python Dependencies:**
+    You need to install the following packages:
+    ```bash
+    pip install fastapi uvicorn pymongo certifi python-jose[cryptography] passlib[argon2] multipart
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4.  **Run the Backend Server:**
+    Start the FastAPI server on port 8000:
+    ```bash
+    uvicorn app:app --reload
+    ```
+    The API should now be running at `http://127.0.0.1:8000`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Frontend Setup (Next.js)
+
+The frontend provides the user interface.
+
+1.  **Open a new terminal** (keep the backend running in the first one).
+
+2.  **Navigate to the project root:**
+    ```bash
+    # If you are in backend/, go back up
+    cd ..
+    ```
+
+3.  **Install Node Dependencies:**
+    ```bash
+    npm install
+    ```
+
+4.  **Run the Frontend Development Server:**
+    ```bash
+    npm run dev
+    ```
+
+5.  **Access the Application:**
+    Open your browser and visit [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Troubleshooting
+
+- **CORS Error ("Failed to fetch"):** Ensure the backend is running on port 8000 and the frontend on port 3000.  (This has been configured in `backend/app.py`).
+- **Database Connection:** The database connection string is currently hardcoded in `backend/database.py`. Ensure you have internet access to connect to MongoDB Atlas.
